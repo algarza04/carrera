@@ -1,0 +1,18 @@
+CONSTRAINT -> se le añada a los datos de una tabla para asegurar integridad y validez, limitan el tipo de datos que se pueden insertar para que sean precisos:
+	PRIMARY KEY
+	
+	FOREIGN KEY -> clave externa(clave primaria de otra tabla)
+	
+	UNIQUE -> asegura que todos los datos sean unicos
+	
+	NOT NULL
+	
+	CHECK -> asegura que todos los datos cumplan una condición
+	
+	DEFAULT -> proporciona un valor por defecto si no se le proporciona ningún valor
+	
+SELECT table_name FROM user_tables;	// ver todas las tablas creadas
+
+Modificar datos tabla -> UPDATE tabla SET atb = 'x' WHERE atb = 'y'
+
+ALTER TABLE nombre_tabla modificador;	//añadir atb a una tabla

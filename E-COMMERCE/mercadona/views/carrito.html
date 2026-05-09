@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% block title %}Carrito{% endblock %} {% block
+content %}
+<div class="py-4">
+  <h2>Contenido carrito</h2>
+  <p>Productos añadidos a mi carrito y su precio.</p>
+  <hr />
+
+  <h3>Productos en el Carrito (Total: {{ totalArticulos | default(0) }})</h3>
+  <ul>
+    {% if carrito and carrito | length > 0 %} {% for item in carrito %}
+    <li>
+      Producto: <strong>{{ item.nombre }}</strong>
+      (Cantidad: {{ item.cantidad | default(1) }} | Precio Unitario: {{
+      item.precio | round(2) }} €)
+    </li>
+    {% endfor %} {% else %}
+    <li><em>El carrito de la sesión está vacío.</em></li>
+    {% endif %}
+  </ul>
+
+  <p>
+    <strong
+      >Precio Total Calculado: {{ precioTotal | round(2) | default('0.00') }}
+      €</strong
+    >
+  </p>
+</div>
+{% endblock %}

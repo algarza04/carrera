@@ -1,0 +1,51 @@
+* {
+    box-sizing: border-box;
+}
+.galeria {
+    box-sizing: border-box;
+    max-width: 700px;
+    text-align: center;
+    border: 5px solid cornflowerblue;
+    background-color: lightsteelblue;
+    font-size: 0;
+}
+.fila {
+    background-color: azure;
+    margin: 5px;
+    display: inline-block;
+    width: calc(100% - 10px);
+}
+
+.imagen {
+    border: 1px solid black;
+    background-color: beige;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: -0.5px;
+    padding: 5px;
+    margin: 10px;
+    height: auto;
+    font-size: 12px; 
+    display: inline-block;
+}
+
+.col1 .imagen{
+    width: calc(100% - 20px);
+}
+
+.col2 .imagen {
+    width: calc(100% / 2 - 20px);
+}
+
+.col3 .imagen {
+    width: calc(100% / 3 - 20px);
+}
+
+img {
+    border: 1px solid lightgrey;
+    background-color: white;
+    padding: 5px;
+    width: 100%;
+}
+em {
+    display: block;
+}

@@ -1,0 +1,1 @@
+c++ -std=c++11 -pthread -o ejecutable eje.cpp scd.cpp scd.h

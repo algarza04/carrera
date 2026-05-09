@@ -1,0 +1,18 @@
+cd pr
+
+PYTHON+FLASK
+python -m venv prueba_py_flask //esto crea un entorno virtual, hacer la primera vez
+source prueba_py_flask/bin/activate //entrar al entorno virtual
+
+pip install flask
+cp -r py+flask prueba_py_flask
+cd prueba_py_flask
+cd py+flask
+python app.py
+http://localhost:5000
+
+PHP
+sudo apt install php
+cd php
+php -S localhost:8000
+http://localhost:8000

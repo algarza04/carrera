@@ -1,0 +1,91 @@
+__________________TEMA 1_____________________
+
+Software: es un programa o conjunto de programas que contiene datos, procedimientos y pautas parar realizar una tarea.
+	Caracterización:
+		>Software de aplicación:
+			Software de programación
+			Software de aplicación
+			Software de sistemas
+		>Por licencias:
+			Codigo abierto
+			Código cerrado
+			Dominio público
+		>Según destinatario: 
+			Usuario final
+			Para distribución(genérico)
+		
+	El software se desarrolla, no se fabrica. El software se deteriora, no se estropea.
+	Crea modelos de la realidad.
+	Está formado por piezas que deben encajar a la perfección.
+	
+	Creación:
+		Definición->Construcción->Evolución.
+		
+		Definición:	10%
+			Ingeniería de sistemas
+			Ingeniería de requisitos.
+			Planificación de proyectos.
+		Construcción:	30%
+			Diseño del software
+			Generación de código
+			Prueba de software
+		Evolución:	60%
+			Corrección
+			Adaptación
+			Mejora
+			Prevención
+			
+	Problemas en el desarrollo:
+		>Comunicación entre personas.
+		>Incumplimiento de la planificación.
+		>Incorporar cambios
+		
+		
+
+Ingeniería del software:
+	Definición de IS: Estudio de principios, metodologías y herramientas que forman parte de un proceso para facilitar el desarrollo y mantenimiento de sistemas software de calidad.
+	
+	Necesaria para:
+		>Prevenir el mal funcionamiento
+		>Mantener el software
+		>Demanda de un nuevo software
+		>Adaptación a las nuevas tecnologías
+		>Incremento de la complejidad
+	
+	Un sistema es un conjunto de elementtos relacionados entre si formando una unidad.
+	Un sistema basado en computadoras es un conjunto de elementos organizados para cumplir una meta
+	Un sistema software es un conjunto de elementos software relacionados entre si y organizados en subsistemas.
+	Un modelo es la representación de un sistema en un determinado lenguaje.
+	
+	Terminología is:
+		>Principio: conocimiento de las características que debe poseer un modelo para tener una representación adecuada.
+		>Herramienta: instrumento que permite representar los modelos.
+		>Técnica: como deben usarses las herramientas.
+		>Heurística: conjunto de reglas empíricas que producen módelos que se asimilan a los principios.
+		>Proceso: estructura que debe seguirse para obtener un producto.
+		>Método: experiencia téctica para elaborar un producto software.
+		
+Proceso de desarrollo: 
+	Es el conjunto de actividades, acciones y tareas para crear un producto.
+		Actividad: busca lograr los objetivos propuestos.
+		Acción: conjunto de tareas
+		Tarea: objetivo pequeño y bien definido.
+		
+	Tipos de actividades: 
+		Estructurales: dedicadas a obtener el producto
+			Comunicación
+			Planificación
+			Modelado
+			Construcción 
+			Despliegue: entrega
+			Sombrilla: comprobaciones durante todo el proceso
+			
+	Tipos de modelos
+		Modelo en cascada: secuencial y flujo lineal
+		Modelo incremental: igual que cascada añadiendo paralelo
+		Modelos evolutivos: iterativos
+		
+	Prodeso unificado:
+		inicio->elaboración->construccion->transición(asegurarse de que cumple con los requisitos especificados
+		
+	

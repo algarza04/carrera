@@ -1,0 +1,19 @@
+# El contenedor se crea a partir de la última imagen Debian
+FROM debian:latest
+
+# Indica que no se solicitará interacción con el usuario durante la instalación de paquetes
+ENV DEBIAN_FRONTEND=nointeractive
+
+# Actualiza los paquetes, instala el conjunto de herramientas de apache, que contendrá ab
+# elimina los archivos de la lista de paquetes
+RUN apt-get update && apt-get install -y apache2-utils && \
+    rm -rf /var/lib/apt/lists/*
+
+# Copia el archivo entrypoint al contenedor
+COPY entrypoint.sh /entrypoint.sh
+
+# Da permisos de ejecución al script entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Define dicho script como punto de entrada principal del contenedor
+ENTRYPOINT ["/entrypoint.sh"]

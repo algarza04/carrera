@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+}
+.galeria {
+    background-color: lightsteelblue;
+    font-size: 0;   /*solucion para que el texto no ocupe espacio para evitar que falle el calculo del espacio de las imagenes*/
+    text-align: center;
+    max-width: 700px;
+    border: 5px solid cornflowerblue;
+}
+
+.fila {
+    background-color: azure;
+    margin: 5px;
+    display: inline-block;
+}
+
+.imagen {
+    border: 1px solid black;
+    background-color: beige;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: -0.5px;
+    padding: 5px;
+    margin: 10px;
+    width: calc(100% / 3 - 20px);   /*-20 px por el margin*/
+    height: auto;
+    font-size: 12px; 
+    display: inline-block;
+}
+
+img {
+    border: 1px solid lightgrey;
+    background-color: white;
+    padding: 5px;
+    width: calc(100% - 10px); 
+}
+
+em {
+    display: block;
+}

@@ -1,0 +1,7 @@
+V	261206163250Z		1000	unknown	/CN=www.example.com
+R	261206165644Z	251126170042Z	1001	unknown	/CN=bob@example.com
+R	261206170408Z	251126171214Z	1002	unknown	/CN=bob@example.com
+R	261206171625Z	251126172036Z	1003	unknown	/CN=bob@example.com
+R	261207092841Z	251127105615Z	1004	unknown	/CN=bob@example.com
+R	261207115308Z	251127115420Z	1005	unknown	/CN=carlos@example.com
+R	261207115446Z	251127115550Z	1006	unknown	/CN=carlos@example.com

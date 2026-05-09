@@ -1,0 +1,92 @@
+[
+    {
+        "Name": "p1-apache_red_web",
+        "Id": "8f339ed35104d0b4f879e8960e01220841a8fba83b029bacf5183463c88aaed5",
+        "Created": "2025-03-24T12:41:36.195079982+01:00",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "192.168.10.0/24"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "67d6751c9d90f5f894326c80f89c600e2883078dff1a5f19215005f5c73f63d4": {
+                "Name": "web6",
+                "EndpointID": "c4f71d1734157023905370c352ba866cfa3b3629a23f6f359b5a4f6a78df2414",
+                "MacAddress": "9e:62:33:ad:be:80",
+                "IPv4Address": "192.168.10.7/24",
+                "IPv6Address": ""
+            },
+            "6afaa59f45cbeeb2e3da25cde9feed2926dd96991384c7100e551ee208d62add": {
+                "Name": "web4",
+                "EndpointID": "85c5750bfde2215af6b3b6c70d18186c88cdabc66a7e79a7e923fa30d79b9f1e",
+                "MacAddress": "86:5f:5f:9e:15:73",
+                "IPv4Address": "192.168.10.5/24",
+                "IPv6Address": ""
+            },
+            "723d203c764d6068d0856f55504a43cff140ce4c282a6549a783a06bf6d30b2d": {
+                "Name": "web5",
+                "EndpointID": "2667bb0fa4a202cff34a764246e30f5d47cc7855790f0b8edf4115838a2a0f58",
+                "MacAddress": "ea:1a:f6:7d:43:ab",
+                "IPv4Address": "192.168.10.6/24",
+                "IPv6Address": ""
+            },
+            "75ae60ee86059b3514e7802d153291c7ce4182d5268374c1de01b7afaba46398": {
+                "Name": "web8",
+                "EndpointID": "40b1f900459cda28450a8eb912c6333b6d0c95d0d2f9b994feb0211c17c28e6c",
+                "MacAddress": "92:f2:f3:4c:ef:11",
+                "IPv4Address": "192.168.10.9/24",
+                "IPv6Address": ""
+            },
+            "882e3de31bfb6876a814b51474d0453818d25cae2c04e0e1f79b11f5208a4f36": {
+                "Name": "web3",
+                "EndpointID": "207b31730149c141d3ee36eed9348d6d1d7ce9cb51747503d43a7d7b2d6f2e4b",
+                "MacAddress": "5a:89:44:49:29:e6",
+                "IPv4Address": "192.168.10.4/24",
+                "IPv6Address": ""
+            },
+            "acb394e022fbe09b26f9a07d011bf50cc51fdab10d322b01674df28c982bb036": {
+                "Name": "web2",
+                "EndpointID": "ac2b692e570c713e027b53f75151121a82d096c9b35efc5abf6a3122d4be2b3a",
+                "MacAddress": "5a:2e:6a:29:1b:c5",
+                "IPv4Address": "192.168.10.3/24",
+                "IPv6Address": ""
+            },
+            "c87718b36d8f65c6adcb7311589f992fd2e561068696cc88292c7fae14dfd1d3": {
+                "Name": "web1",
+                "EndpointID": "a188c4ce8feb3704a4871d8a732a06d9d6e5fd879ab1012f259cbfb5764b29ed",
+                "MacAddress": "02:21:27:b4:b4:06",
+                "IPv4Address": "192.168.10.2/24",
+                "IPv6Address": ""
+            },
+            "f55ecb1839f14acd270bbf0dc1aabaa3d9ef6e616bc5324183bf8446f29d32b2": {
+                "Name": "web7",
+                "EndpointID": "8b31232bf65ca081d40e76245639c5222c84611ae947a79abe1bf74fdfde0b20",
+                "MacAddress": "62:2b:fe:1f:0d:a4",
+                "IPv4Address": "192.168.10.8/24",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {},
+        "Labels": {
+            "com.docker.compose.config-hash": "4b51c17b38798d323fae68896c858506691e27615536ad86f39a321badfdba6a",
+            "com.docker.compose.network": "red_web",
+            "com.docker.compose.project": "p1-apache",
+            "com.docker.compose.version": "2.33.1"
+        }
+    }
+]

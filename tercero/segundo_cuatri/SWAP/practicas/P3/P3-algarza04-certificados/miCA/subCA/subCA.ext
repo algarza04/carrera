@@ -1,0 +1,9 @@
+# Define que este certificado es de una CA con una cadena de certificados limitada (pathlen:0).
+basicConstraints = critical, CA:TRUE, pathlen:0
+
+# Permite firmar certificados, listas de revocación y datos digitales.
+keyUsage = critical, digitalSignature, cRLSign, keyCertSign
+
+# Identifica la clave pública del certificado y vincula con la CA emisora.
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid,issuer

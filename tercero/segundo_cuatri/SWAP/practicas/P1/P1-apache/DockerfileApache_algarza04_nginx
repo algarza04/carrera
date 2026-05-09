@@ -1,0 +1,7 @@
+FROM nginx:latest
+
+COPY web_algarza04/index.php /usr/share/nginx/html/
+
+EXPOSE 80
+
+CMD nginx -g "daemon off;" && tail -f /dev/null

@@ -1,0 +1,8 @@
+Email: stock@empresa.dom.es
+Email: central@gmail.com
+Email: botautomatico@empresa.bot.com
+Email: soportetecnico@empresa.dom.es
+Email: ayuda@empresa.dom.es
+Email: logistica@empresa.dom.es
+Email: anadirectora@empresa.dom.es
+Num. de emails 7

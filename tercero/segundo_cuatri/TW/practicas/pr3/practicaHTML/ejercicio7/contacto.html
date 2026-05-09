@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Contacto</title>
+    <style type="text/css">
+        label { display:block; }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="imagenes/log_centro.png" alt="Logotipo centro">
+        <img src="imagenes/log_ugr.png" alt="Logotipo UGR">
+    </header>
+
+    <section>
+        <h2>Contacto para preguntas, problemas y sugerencias</h2>
+        <form action="../ficheros/procesar.php" method="get">
+            <label>E-mail:
+                <input type="email" name="email" id="email" placeholder="e-mail obligatorio" required>
+            </label>
+
+            <label>Asunto:
+                <input type="text" name="asunto" size="30" placeholder="Asunto" required>
+            </label>
+            
+            <label>Mensaje:
+                <textarea name="mensaje" cols="25" rows="10" placeholder="Escriba su mensaje" required></textarea>
+            </label>
+
+            <input type="submit" value="Enviar mensaje">
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 ETSIIT - Universidad de Granada</p>
+    </footer>
+</body>
+</html>

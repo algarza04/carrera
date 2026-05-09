@@ -1,0 +1,5 @@
+FROM haproxy:latest
+
+EXPOSE 80
+
+CMD ["haproxy", "-f", "/usr/local/etc/haproxy/haproxy.cfg", "-db"]

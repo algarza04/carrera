@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 5.12</title>
+    <style type="text/css">
+        label { display:block; }
+    </style>
+</head>
+<body>
+    <!--
+    la diferencia entre readonly y disabled es que el primmero te permite obtener el foco, es decir, el primero 
+    te permite acceder al foco(casilla) independientemente de que no pueda modificar la información, en cambio el 
+    segundo no permite acceder al foco, además el primero realiza el envía el valor al servidor al hacer el submit 
+    mientras que  el segundo no.
+    El uso de readonly será para cuando se desa mostrar información que no debe ser modificada pero si debe ser enviada  
+    El uso de disable será para cuando se desea mostrar alguna informaciñon pero que no debe ser enviada al servidor
+    -->
+
+    <h1>Registro de usuarios</h1>
+    <form action="../ficheros/procesar.php" method="GET">       
+        <label>Nombre: 
+            <input type="text" name="nombre" size="16" required placeholder="El nombre es obligatorio" value="Javier" readonly>
+        </label>  
+        <label>Apellidos: 
+            <input type="text" name="apellidos" size="20" placeholder="Este campo es opcional" value="Martínez" readonly>
+        </label>
+        <label>Control de acceso: 
+            <input type="password" name="clave" maxlength="8" size="10" required placeholder="Escriba la clave" value="miclave" readonly>
+        </label>
+
+        <label>Nacionalidad: 
+            <input type="text" name="nacionalidad" value="España" readonly>
+        </label>
+        <label>E-mail: 
+            <input type="email" name="email" required placeholder="e-mail obligatorio" value="javiermartinez@ugr.es" readonly>
+        </label>
+
+        <label>Sexo:
+        <select name="sexo">
+            <option selected>Masculino</option>
+            <option disabled>Femenino</option> 
+            <option value="NA" disabled>No deseo responder</option>
+        </select></label>
+        <label>Almacenamiento de datos:
+        <select name="datos almacenados">
+            <option selected value="TOTAL" >Acepta el almacenamiento de mis datos y el envío a terceros</option>
+            <option value="PARCIAL" disabled>Acepta el almacenamiento de mis datos pero no el envío a terceros</option>
+            <option value="NINGUNO" disabled>No acepta el almacenamiento ni el envío de datos a terceros</option>
+        </select>
+        </label>
+
+        <p>Idioma para comunicaciones: </p>     
+        <label><input type="radio" name="idioma" value="Español" disabled>Español</label>
+        <label><input type="radio" name="idioma" value="Inglés" checked >Inglés</label>
+        <label><input type="radio" name="idioma" value="Francés" disabled>Francéss</label>
+
+        <p>Aficiones: </p>
+        <label><input type="checkbox" name="aficiones[]" value="música" checked disabled>La música</label>
+        <label><input type="checkbox" name="aficiones[]" value="leer" checked disabled>Leer libros</label>
+        <label><input type="checkbox" name="aficiones[]" value="cine" disabled>El cine</label>
+        <label><input type="checkbox" name="aficiones[]" value="deporte" disabled>El deporte</label>
+    
+        <label>Fecha de nacimiento: 
+            <input type="date" name="fecha_nacimiento" required value="2000-01-01" readonly>
+        </label>
+        <label>Semana Santa:
+            <input type="week" name="Semana Santa" required value="2025-W16" readonly>
+        </label>
+        
+        <input type="hidden" name="version" value="1.0">
+
+        <input type="submit" value="Enviar datos" name="envio">
+    </form>
+</body>
+</html>

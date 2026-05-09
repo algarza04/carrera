@@ -1,0 +1,32 @@
+# El contenedor se crea a partir de la última imagen Debian
+FROM debian:latest
+
+# Indica que no se solicitará interacción con el usuario durante la instalación de paquetes
+ENV DEBIAN_FRONTEND=nointeractive
+
+# Instalar las dependencias necesarias
+# (servidor web Apache, PHP, paquete de PHP para Apache y la herramienta ping, además limpia la cache)
+RUN apt update && apt install -y apache2 php libapache2-mod-php iputils-ping && \
+    rm -rf /var/lib/apt/lists/*
+
+# Copia el .php al directorio de Apache que contiene los ficheros html
+COPY P3-algarza04-apache/web_algarza04/index.php /var/www/html/
+
+#Instalar módulo y habilitar sitio SSL por defecto y crear directorio para certificados
+RUN a2enmod ssl && a2ensite default-ssl && mkdir /etc/apache2/ssl
+
+# Copiar certificado y clave privada
+COPY P3-algarza04-certificados/certificado_algarza04.crt /etc/apache2/ssl/certificado_algarza04.crt
+COPY P3-algarza04-certificados/certificado_algarza04.key /etc/apache2/ssl/certificado_algarza04.key
+
+# Configurar los permisos adecuados
+RUN chmod 600 /etc/apache2/ssl/certificado_algarza04.crt
+
+# Incluir la configuración SSL
+COPY P3-algarza04-apache/algarza04-apache-ssl.conf /etc/apache2/sites-available/algarza04-apache-ssl.conf
+
+# Exponer el puerto  HTTPS
+EXPOSE 443
+
+# Inicia el servidor Apache en primer plano y mantiene el contenedor en ejecución(tail -f /dev/null)
+CMD apache2ctl -D FOREGROUND && tail -f /dev/null

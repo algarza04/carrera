@@ -1,0 +1,19 @@
+SEMINARIO 1
+telnet pin //para conectarme a pc2 desde pc1
+
+wimbox nos permite ejecutar aplicaciones windows en linux
+
+TOOLS 
+	ping 
+	telnet
+	ifconfig
+	traceroute/tracert
+	nslookup www.xxxxxxx.es
+	wireshark/tcpdump: analizador de protocolos
+
+SEMINARIO 2
+un rooter tiene tantas ip como interfaces tiene, por ejemplo ether1 y ether4
+el https puede funcionar en el puerto 8080, si no lo ponemos funcionara con su puerto estandar, en este caso 80
+
+telnet pc2 223, se conectara al puerto 223 del pc2
+	

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 6</title>
+    <style>
+        /*El problema que ha surgido al incluir ambos margin ha sido que se ha reajustado el tamaño de las cajas
+        haciendo las 3 cajas más pequeñas para poder incluir dicho espacio, por lo que para esto hay que usar calc*/
+        * {
+            margin: 0; 
+            box-sizing: border-box;
+        }
+
+        body {
+            text-align: center;
+        }
+
+        nav {           
+            border: 5px solid;
+            border-color: black ;
+            width: 80%;
+            margin: auto;
+            background-color: lightgrey;
+        }
+
+        p { 
+            border: 5px solid;
+            display: inline-block;
+        }
+
+        p.primero {
+            border-color: red;
+            width: calc(20% - 20px);
+            text-align: left;
+        }
+
+        p.medio {
+            border-color: greenyellow;
+            width: 60%;
+        }
+
+        p.final {
+            border-color: blue;
+            width: calc(20% - 20px);
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <p class="primero">Anterior</p><p class="medio">Medio</p><p class="final">Siguiente</p>
+    </nav>
+</body>
+</html>

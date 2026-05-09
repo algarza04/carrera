@@ -1,0 +1,200 @@
+networks:
+  red_web:
+    external: true
+  red_servicios:
+    external: true
+  red_monitoreo:
+    ipam:
+      config:
+        - subnet: 192.168.30.0/24
+
+services:
+  web1:
+    build:
+      context: .
+      dockerfile: DockerfileApache_algarza04
+    image: algarza04-apache-image:p2
+    container_name: web1
+    ports:
+      - 8081:80
+    volumes:
+      - ./web_algarza04:/var/www/html
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.2
+      red_servicios:
+        ipv4_address: 192.168.20.2
+
+  web2:
+    build:
+      context: .
+      dockerfile: DockerfileApache_algarza04
+    image: algarza04-apache-image:p2
+    container_name: web2
+    ports:
+      - 8082:80
+    volumes:
+      - ./web_algarza04:/var/www/html
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.3
+      red_servicios:
+        ipv4_address: 192.168.20.3
+
+  web3:
+    build:
+      context: .
+      dockerfile: DockerfileApache_algarza04
+    image: algarza04-apache-image:p2
+    container_name: web3
+    ports:
+      - 8083:80
+    volumes:
+      - ./web_algarza04:/var/www/html
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.4
+      red_servicios:
+        ipv4_address: 192.168.20.4
+
+  web4:
+    build:
+      context: .
+      dockerfile: DockerfileApache_algarza04
+    image: algarza04-apache-image:p2
+    container_name: web4
+    ports:
+      - 8084:80
+    volumes:
+      - ./web_algarza04:/var/www/html
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.5
+      red_servicios:
+        ipv4_address: 192.168.20.5
+
+  web5:
+    build:
+      context: .
+      dockerfile: DockerfileApache_algarza04
+    image: algarza04-apache-image:p2
+    container_name: web5
+    ports:
+      - 8085:80
+    volumes:
+      - ./web_algarza04:/var/www/html
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.6
+      red_servicios:
+        ipv4_address: 192.168.20.6
+
+  web6:
+    build:
+      context: .
+      dockerfile: DockerfileApache_algarza04
+    image: algarza04-apache-image:p2
+    container_name: web6
+    ports:
+      - 8086:80
+    volumes:
+      - ./web_algarza04:/var/www/html
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.7
+      red_servicios:
+        ipv4_address: 192.168.20.7
+
+  web7:
+    build:
+      context: .
+      dockerfile: DockerfileApache_algarza04
+    image: algarza04-apache-image:p2
+    container_name: web7
+    ports:
+      - 8087:80
+    volumes:
+      - ./web_algarza04:/var/www/html
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.8
+      red_servicios:
+        ipv4_address: 192.168.20.8
+
+  web8:
+    build:
+      context: .
+      dockerfile: DockerfileApache_algarza04
+    image: algarza04-apache-image:p2
+    container_name: web8
+    ports:
+      - 8088:80
+    volumes:
+      - ./web_algarza04:/var/www/html
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.9
+      red_servicios:
+        ipv4_address: 192.168.20.9
+        
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    ports:
+      - "8080:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true  # ← Añadido para dar permisos avanzados
+
+    networks:
+      red_monitoreo:
+        ipv4_address: 192.168.30.2
+      
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      red_monitoreo:
+        ipv4_address: 192.168.30.3   
+        
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    networks:
+      red_monitoreo:
+          ipv4_address: 192.168.30.4
+          
+  balanceador-nginx:
+    build:
+      context: .
+      dockerfile: DockerfileNginx_algarza04
+    image: algarza04-nginx-image:p2
+    container_name: nginx
+    ports:
+      - 8090:80
+    volumes:
+      - ./conf/roundrobin/nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.50
+    depends_on:
+      - web1
+      - web2
+      - web3
+      - web4
+      - web5
+      - web6
+      - web7
+      - web8

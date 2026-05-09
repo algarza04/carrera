@@ -1,0 +1,431 @@
+* {
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;  
+}
+
+header {
+    background-color: darkslategrey;
+    display: block;
+    align-items: center;
+    align-self: center;
+    margin-bottom: 5px;
+    padding: 5px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+h1 {
+    background-color: rgb(209, 96, 18);
+    color: white;
+    border: 1px solid;
+    width: fit-content;
+    margin: 0 10px;
+    font-size: 5rem;
+    padding: 0 10px;
+}
+
+h2 {
+    color: white;
+    padding: 10px;
+    width: fit-content;
+    border: 1px solid ;
+    margin: 5px ;
+    font-size: 2rem;
+    border: 3px solid white;
+    font-weight: bold;
+}
+
+h3 {
+    background-color: orange;
+    color: white;
+    padding: 10px;
+    width: fit-content;
+    border: 1px solid;
+    margin: 5px 10px 10px 10px;
+    font-size: 1.2rem;
+}
+
+main {
+    background-color: rgb(130, 133, 133);
+    padding-top: 5px;
+    color: white;
+    font-size: 1.2rem;
+    padding-bottom: 5px;
+    display: flex;
+}
+
+aside {
+    text-align: left;
+    width: calc(20% + 50px);
+    background-color: rgb(80, 80, 80);
+    padding: 10px 5px;
+    margin: -5px 0;
+}
+
+input, textarea, select {
+    font-size: 0.9rem;
+    padding: 2px 5px;
+    width: 150px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+aside nav {
+    padding-left: 5px;
+}
+
+main section {
+    width: 80%;
+    flex-wrap: wrap;
+    margin-left: 15px;
+
+}
+
+header div {
+    display: flex;
+    max-height: 100px; 
+}
+
+div img {
+    max-width: 350px;
+}
+
+header nav ul {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgb(64, 94, 94);
+    margin: 10px 0;
+    padding: 10px;
+    height: 100%;
+    border-radius: 5px;
+    list-style: none;
+}
+
+header nav ul li {
+    flex: 1 1 120px;
+    min-width: 120px;
+    text-align: center;
+    padding-bottom: 5px;
+    box-sizing: border-box;
+}
+
+header nav ul li a {
+    display: block;
+    width: 100%;
+}
+
+.aula_libr {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid white;
+    display: flex;
+    align-items: flex-start;
+}
+
+.aula_libr img {
+    margin-left: auto; 
+    max-width: 200px;
+    border: 1px solid;
+}
+
+.imagen {
+    border: 2px solid;
+}
+
+.aulas_reservadas {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+}
+th, td {
+    border: 1px solid black;
+    padding: 2px;
+}
+
+th {
+    background-color: lightgray;
+}
+
+td {
+    height: 40px;
+}
+
+.sala {
+    background-color: lightskyblue;
+}
+
+.aula {
+    background-color: orange;
+    font-weight: bold;
+}
+
+.reserva {
+    background-color: lightblue;
+}
+
+.evento {
+    background-color: lightgreen;
+}
+
+.usuario {
+    border: 1px solid white;
+    padding: 5px;
+    margin: 5px;
+}
+
+.logougr {
+    max-width: 100px;
+}
+
+.boton_azul {
+    background-color: royalblue;
+    color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+.boton {
+    background-color: rgb(64, 94, 94);
+    color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 5px 5px; 
+    margin: 5px;
+    font-size: 1.2rem;
+
+}
+ul.comentarios {
+    padding-left: 0;
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+ul.comentarios li {
+    background: #f5f5f5;
+    color: #222;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    padding: 10px;
+    word-break: break-word;
+    white-space: pre-line;
+}
+
+nav {
+    padding-bottom: 5px;
+}
+
+ul {
+    list-style: none;
+    padding: 5;
+}
+
+li {
+    padding: 5px 5px 15px;
+}
+
+li a {
+    color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+}
+
+li a:hover {
+    background-color: rgb(209, 96, 18); 
+}
+
+p a:hover {
+    background-color: rgb(209, 96, 18); 
+}
+
+p a {
+    color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+}
+
+label * {
+    padding: 5px;
+    margin-left: 10px;
+}
+
+fieldset {
+    border: none;
+    text-align: left;
+}
+label { 
+    display:flex; 
+    padding: 5px;
+    align-items: flex-start;
+    margin: 10px;
+}
+
+footer {
+    background-color: rgb(75, 104, 104);
+    text-align: center;
+    margin-top: 0px;
+    padding: 5px;
+    color: white;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+
+@media (max-width: 750px) {
+    header img {
+        display: none;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        padding: 5px;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+        padding: 5px;
+    }
+
+    h3 {
+        font-size: 1rem;
+        padding: 5px;
+    }
+
+    main {
+        font-size: 1rem;
+    }
+
+    div img {
+        max-width: 275px;
+    }
+
+    main {
+        font-size: 0.8rem;
+    }
+    aside {
+        margin: 0;
+        width: calc(20% + 35px);
+    }
+
+    input, textarea, select {
+        font-size: 0.6rem;
+        padding: 2px 5px;
+        width: 100px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    .boton {
+    font-size: 0.8rem;
+}
+
+    aside nav {
+        padding-left: 0;
+    }
+
+    .aulas_reservadas {
+        font-size: 0.5rem;
+    }
+    td {
+        height: 20px;
+    }
+
+    input, textarea {
+        font-size: 1rem;
+        padding: 5px;
+    }
+
+    label { 
+        padding: 1px;
+        margin: 5px;
+    }
+
+    label * {
+        padding: 0;
+        margin-left: 5px;
+    }
+
+    .aula_libr img {
+        max-width: 200px;
+    }
+
+    fieldset *{
+        padding: 2px;
+    }
+
+    header nav ul li {
+        min-width: 90px;
+        flex: 1 1 90px;
+    }
+
+
+    header nav ul li a {
+        color: white;
+        text-decoration: none;
+        border: 1px solid white;
+        border-radius: 10px;
+        padding: 5px;
+        margin: 5px;
+        font-size: 0.8em;
+    }
+
+    li a {
+        border: none;
+        color: white;
+    }
+
+    footer {
+        font-size: 0.8rem;
+        padding: 5px;
+    }
+
+    @media (max-width: 450px) {
+        h1, h2, h3 {
+            font-size: 1rem;
+        }
+
+        main {
+            font-size: 0.8rem;
+        }
+
+        div img {
+            max-width: 200px;
+        }
+        .aula_libr img {
+            max-width: 100px;
+        }
+
+        main {
+            font-size: 0.6rem;
+        }
+        aside {
+            width: calc(15% + 50px);
+        }
+
+        .aulas_reservadas {
+            font-size: 0.2rem;
+        }
+        td {
+            height: 10px;
+        }
+
+        label * {
+            font-size: 0.8rem;
+        }
+    
+        footer {
+            font-size: 0.7rem;
+        }
+    }
+}

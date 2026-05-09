@@ -1,0 +1,260 @@
+# inicialización de las redes web y servicios
+networks:
+  red_web:
+    name: red_web
+    ipam:
+      config:
+        - subnet: 192.168.10.0/24
+  red_servicios:
+    name: red_servicios
+    ipam:
+      config:
+        - subnet: 192.168.20.0/24
+
+services:
+  # inicialización del contenedor web1:
+  # -es creado a partir del Dockerfile de apache
+  # -se le asigna su nombre e imagen
+  # -se asignanun puerto HTTPS y HTTP
+  # -se asignan los volumenes (dir web que posee el php y dir que posee los certificados)
+  # -se asignan las redes (red_web y red_servicios) con su ip estática correspondiente
+  # -se asigna la capacidad de administrar la red
+  web1:
+    build:
+      context: .
+      dockerfile: P5-algarza04-apache/DockerfileApache_algarza04
+    image: algarza04-apache-image:p5
+    container_name: web1
+    ports:
+      - 8081:443
+      - 9091:80
+    volumes:
+      - ./P5-algarza04-apache/web_algarza04:/var/www/html
+      - ./P5-algarza04-certificados:/etc/apache2/ssl/
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.2
+      red_servicios:
+        ipv4_address: 192.168.20.2
+    cap_add:
+      - NET_ADMIN
+
+  # inicialización del contenedor web2:
+  # -es creado a partir del Dockerfile de apache
+  # -se le asigna su nombre e imagen
+  # -se asignanun puerto HTTPS y HTTP
+  # -se asignan los volumenes (dir web que posee el php y dir que posee los certificados)
+  # -se asignan las redes (red_web y red_servicios) con su ip estática correspondiente
+  # -se asigna la capacidad de administrar la red
+  web2:
+    build:
+      context: .
+      dockerfile: P5-algarza04-apache/DockerfileApache_algarza04
+    image: algarza04-apache-image:p5
+    container_name: web2
+    ports:
+      - 8082:443
+      - 9092:80
+    volumes:
+      - ./P5-algarza04-apache/web_algarza04:/var/www/html
+      - ./P5-algarza04-certificados:/etc/apache2/ssl/
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.3
+      red_servicios:
+        ipv4_address: 192.168.20.3
+    cap_add:
+      - NET_ADMIN
+
+  # inicialización del contenedor web3:
+  # -es creado a partir del Dockerfile de apache
+  # -se le asigna su nombre e imagen
+  # -se asignanun puerto HTTPS y HTTP
+  # -se asignan los volumenes (dir web que posee el php y dir que posee los certificados)
+  # -se asignan las redes (red_web y red_servicios) con su ip estática correspondiente
+  # -se asigna la capacidad de administrar la red
+  web3:
+    build:
+      context: .
+      dockerfile: P5-algarza04-apache/DockerfileApache_algarza04
+    image: algarza04-apache-image:p5
+    container_name: web3
+    ports:
+      - 8083:443
+      - 9093:80
+    volumes:
+      - ./P5-algarza04-apache/web_algarza04:/var/www/html
+      - ./P5-algarza04-certificados:/etc/apache2/ssl/
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.4
+      red_servicios:
+        ipv4_address: 192.168.20.4
+    cap_add:
+      - NET_ADMIN
+
+  # inicialización del contenedor web4:
+  # -es creado a partir del Dockerfile de apache
+  # -se le asigna su nombre e imagen
+  # -se asignanun puerto HTTPS y HTTP
+  # -se asignan los volumenes (dir web que posee el php y dir que posee los certificados)
+  # -se asignan las redes (red_web y red_servicios) con su ip estática correspondiente
+  # -se asigna la capacidad de administrar la red
+  web4:
+    build:
+      context: .
+      dockerfile: P5-algarza04-apache/DockerfileApache_algarza04
+    image: algarza04-apache-image:p5
+    container_name: web4
+    ports:
+      - 8084:443
+      - 9094:80
+    volumes:
+      - ./P5-algarza04-apache/web_algarza04:/var/www/html
+      - ./P5-algarza04-certificados:/etc/apache2/ssl/
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.5
+      red_servicios:
+        ipv4_address: 192.168.20.5
+    cap_add:
+      - NET_ADMIN
+
+  # inicialización del contenedor web5:
+  # -es creado a partir del Dockerfile de apache
+  # -se le asigna su nombre e imagen
+  # -se asignanun puerto HTTPS y HTTP
+  # -se asignan los volumenes (dir web que posee el php y dir que posee los certificados)
+  # -se asignan las redes (red_web y red_servicios) con su ip estática correspondiente
+  # -se asigna la capacidad de administrar la red
+  web5:
+    build:
+      context: .
+      dockerfile: P5-algarza04-apache/DockerfileApache_algarza04
+    image: algarza04-apache-image:p5
+    container_name: web5
+    ports:
+      - 8085:443
+      - 9095:80
+    volumes:
+      - ./P5-algarza04-apache/web_algarza04:/var/www/html
+      - ./P5-algarza04-certificados:/etc/apache2/ssl/
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.6
+      red_servicios:
+        ipv4_address: 192.168.20.6
+    cap_add:
+      - NET_ADMIN
+
+  # inicialización del contenedor web6:
+  # -es creado a partir del Dockerfile de apache
+  # -se le asigna su nombre e imagen
+  # -se asignanun puerto HTTPS y HTTP
+  # -se asignan los volumenes (dir web que posee el php y dir que posee los certificados)
+  # -se asignan las redes (red_web y red_servicios) con su ip estática correspondiente
+  # -se asigna la capacidad de administrar la red
+  web6:
+    build:
+      context: .
+      dockerfile: P5-algarza04-apache/DockerfileApache_algarza04
+    image: algarza04-apache-image:p5
+    container_name: web6
+    ports:
+      - 8086:443
+      - 9096:80
+    volumes:
+      - ./P5-algarza04-apache/web_algarza04:/var/www/html
+      - ./P5-algarza04-certificados:/etc/apache2/ssl/
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.7
+      red_servicios:
+        ipv4_address: 192.168.20.7
+    cap_add:
+      - NET_ADMIN
+
+  # inicialización del contenedor web7:
+  # -es creado a partir del Dockerfile de apache
+  # -se le asigna su nombre e imagen
+  # -se asignanun puerto HTTPS y HTTP
+  # -se asignan los volumenes (dir web que posee el php y dir que posee los certificados)
+  # -se asignan las redes (red_web y red_servicios) con su ip estática correspondiente
+  # -se asigna la capacidad de administrar la red
+  web7:
+    build:
+      context: .
+      dockerfile: P5-algarza04-apache/DockerfileApache_algarza04
+    image: algarza04-apache-image:p5
+    container_name: web7
+    ports:
+      - 8087:443
+      - 9097:80
+    volumes:
+      - ./P5-algarza04-apache/web_algarza04:/var/www/html
+      - ./P5-algarza04-certificados:/etc/apache2/ssl/
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.8
+      red_servicios:
+        ipv4_address: 192.168.20.8
+    cap_add:
+      - NET_ADMIN
+      
+  # inicialización del contenedor web8:
+  # -es creado a partir del Dockerfile de apache
+  # -se le asigna su nombre e imagen
+  # -se asignanun puerto HTTPS y HTTP
+  # -se asignan los volumenes (dir web que posee el php y dir que posee los certificados)
+  # -se asignan las redes (red_web y red_servicios) con su ip estática correspondiente
+  # -se asigna la capacidad de administrar la red
+  web8:
+    build:
+      context: .
+      dockerfile: P5-algarza04-apache/DockerfileApache_algarza04
+    image: algarza04-apache-image:p5
+    container_name: web8
+    ports:
+      - 8088:443
+      - 9098:80
+    volumes:
+      - ./P5-algarza04-apache/web_algarza04:/var/www/html
+      - ./P5-algarza04-certificados:/etc/apache2/ssl/
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.9
+      red_servicios:
+        ipv4_address: 192.168.20.9
+    cap_add:
+      - NET_ADMIN
+  # inicialización del balanceador-nginx-ssl:
+  # -se crea a partir del Dockerfile de nginx
+  # -se le asigna su nombre e imagen
+  # -se asigna un puerto (asociado al puerto HTTPS del contenedor, ya que servirá las peticiones de forma segura)
+  # -se asignan los volumenes (dir que posee los certificados y dir que posee el archivo de configuración del balanceador)
+  # -se asigna la red_web con su ip estática correspondiente
+  # -se asigna la dependencia de los contenedores web1-8 (ya que el balanceador no puede iniciar sin ellos inicializados)
+  balanceador-nginx-ssl:
+    build:
+      context: .
+      dockerfile: P5-algarza04-nginx/DockerfileNginx_algarza04
+    image: algarza04-nginx-image:p5
+    container_name: balanceador-nginx
+    ports:
+      - 8090:443
+      - 9090:80
+    volumes:
+      - ./P5-algarza04-certificados:/etc/nginx/ssl/
+      - ./P5-algarza04-nginx/algarza04-nginx-ssl.conf:/etc/nginx/nginx.conf
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.50
+    depends_on:
+      - web1
+      - web2
+      - web3
+      - web4
+      - web5
+      - web6
+      - web7
+      - web8

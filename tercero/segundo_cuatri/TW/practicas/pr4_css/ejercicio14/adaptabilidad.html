@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>adaptabilidad</title>
+    <link rel="stylesheet" href="ejercicio14.css">
+</head>
+<body>
+    <header>
+        <img src="imagenes/log_centro.png" alt="Logotipo centro">
+        <h1>CSS adaptable</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Max-With: 750px</h2>
+            <p>Cuando el tamaño de pantalla pase a ser menor de 750 se aplicaran las siguientes características</p>
+            <div>
+                <h3>header img {
+                    display: none;
+                }
+                </h3>
+                    <p>       
+                        Ocultará las imágenes que hay en la cabecera
+                    </p>
+            </div>
+            <div>   
+                <h3>h1 {
+                    font-size: 1.5rem;
+                    padding: 5px;
+                }</h3>
+                <p>Cambiará el tamaño y el padding de h1, esto también se aplica a h2 y h3 pero con diferentes datoss</p>
+            </div>
+            <div>
+                <h3>main {
+                    font-size: 1rem;
+                }</h3>
+                <p>Cambiará el tamaño de la letra del main</p>
+            </div>
+            <div>
+                <h3>div img {
+                    max-width: 275px;
+                }</h3>
+                <p>A las imagenes que descienden de un div le cambia la anchura máxima</p>
+            </div>
+            <div>
+                <h3>input, textarea {
+                    font-size: 1rem;
+                    padding: 5px;
+                }</h3>
+                <p>Reduce el tamaño de los input y textarea</p>
+            </div>
+            <div>
+                <h3>label { 
+                    padding: 1px;
+                    margin: 5px;
+                }</h3>
+                <p>Reduce el padding y margen de los label</p>
+            </div>
+            <div>
+                <h3>label * {
+                    padding: 0;
+                    margin-left: 5px;
+                }</h3>
+                <p>Reduce el padding y margen izquierdo de los hijos de un label</p>
+            </div>
+            <div>
+                <h3>.aula_libr img {
+                    max-width: 200px;
+                }</h3>
+                <p>Reduce el tamaño de las imagenes que descienden de aula_libr</p>
+            </div>
+            <div>
+                <h3>fieldset *{
+                    padding: 2px;
+                }</h3>
+                <p> reduce el padding de los hijos de un fieldset</p>
+            </div>
+            <div>
+                <h3>   li a {
+                    border: none;
+                    color: wheat;
+                }</h3>
+                <p>quita el borde y cambia el color a los enlaces que se encuentran en una lista</p>
+            </div>
+            <div>
+                <h3>footer {
+                    font-size: 0.8rem;
+                    padding: 5px;
+                }</h3>
+                <p>Reduce el tamaño de la letra y el padding de un pie de pagina</p>
+            </div>
+        
+        </section>
+        <section>
+            <h2>Max-With: 450px</h2>
+            <p>Cuando el tamaño de pantalla pase a ser menor de 450 se aplicaran las siguientes características</p>
+            <div>
+                <h3>h1, h2, h3 {
+                    font-size: 1rem;
+                }</h3>
+                <p>Reduce más el tamaño de los encabezados</p>
+            </div>
+            <div>
+                <h3>main {
+                    font-size: 0.8rem;
+                }</h3>
+                <p>Reduce más el tamaño de los caracteres del main</p>
+            </div>
+            <div>
+                <h3> div img {
+                    max-width: 200px;
+                }</h3>
+                <p>Reduce el tamaño de las imagenes que descienden de un div</p>
+            </div>
+            <div>
+                <h3>.aula_libr img {
+                    max-width: 100px;
+                }</h3>
+                <p>Reduce el tamaño de las imagenes que descienden de aula_libr</p>
+            </div>
+            <div>
+                <h3>.aulas_reservadas {
+                    font-size: 0.2rem;
+                }</h3>
+                <p>Reduce el tamaño de la fuente de aulas reservadas</p>
+            </div>
+            <div>
+                <h3>td {
+                    height: 10px;
+                }</h3>
+                <p>Reduce la altura del td</p>
+            </div>
+            <div>
+                <h3>label * {
+                    font-size: 0.8rem;
+                }</h3>
+                <p>Reduce el tamaño de los hijos que descienden de un label</p>
+            </div>
+            <div>
+                <h3>footer {
+                    font-size: 0.7rem;
+                }</h3>
+                <p>Reduce el tamaño de los caracteres del pie de pagina</p>
+            </div>
+        </section>
+    </main>    
+</body>
+</html>

@@ -1,0 +1,9 @@
+lsblk->para ver mis volúmenes
+fdisk-> manipular particiones
+pvdisplay-> info sobre volumenes físicos
+	lvdisplay | more para poder ver la info, ya que se corta
+pvs-> info sobre volumenes físicos
+pvcreate-> inicializar volumen fisisco
+lvcreate-> crear un volumen lógico
+vgs-> informacion sobre cuantos PV tenemos, etc
+vgextend extender el VG r1 desde PV

@@ -1,0 +1,15 @@
+# Define que este certificado no es de una CA
+basicConstraints = CA:FALSE
+
+# Permite firmar datos digitales y cifrar claves
+keyUsage = critical, digitalSignature, keyEncipherment
+
+# Específico para autenticación de servidores
+extendedKeyUsage = serverAuth
+
+# define nombres alternativos para el certificado
+subjectAltName = @alt_names
+
+# Nombre DNS asociado al servidor
+[alt_names]
+DNS.1 = servidor.local

@@ -1,0 +1,32 @@
+# Crea el contenedor a partir de la última imágen de Nginx
+FROM nginx:latest
+
+#Instalar iptables
+RUN apt-get update && apt-get install -y iptables
+
+# Crear directorio para SSL
+RUN mkdir -p /etc/nginx/ssl
+
+# Copiar certificados SSL al contenedor
+COPY P4-algarza04-certificados/certificado_algarza04.crt /etc/nginx/ssl/certificado_algarza04.crt
+COPY P4-algarza04-certificados/certificado_algarza04.key /etc/nginx/ssl/certificado_algarza04.key
+
+# Incluir configuración de Nginx para SSL
+COPY P4-algarza04-nginx/algarza04-nginx-ssl.conf /etc/nginx/nginx.conf
+
+# Copiar script de entrada entrypoint y script de reglas iptables
+COPY P4-algarza04-nginx/P4-algarza04-iptables-web/entrypoint.sh /entrypoint.sh
+COPY P4-algarza04-nginx/P4-algarza04-iptables-web/algarza04-iptables-web.sh /algarza04-iptables-web.sh
+
+# Dar permisos de ejecución a los scripts
+RUN chmod +x /entrypoint.sh /algarza04-iptables-web.sh
+
+# Configurar el script de entrada
+ENTRYPOINT ["/entrypoint.sh"]
+
+# Expose el puerto 80(HTTP) y 443(HTTPS)
+EXPOSE 80
+EXPOSE 443
+
+# Inicia el servidor de Nginx en primer plano y lo mantiene en ejecución(tail -f /dev/null)
+CMD nginx -g "daemon off;" && tail -f /dev/null

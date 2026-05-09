@@ -1,0 +1,11 @@
+Sí, es posible implementar el protocolo al estilo Massey-Omura usando pkeyutl, esto es debido a su exponenciación en cuerpos finitos GF(q).
+
+El primer lugar se elige un cuerpo finito de cardenal primo muy elevado GF(q) y cada usuario elegirá un número secreto aleatorio, 0 < e < q-1 tal que (e,q-1)=1.
+Una vez elegidos cada usuario calculará d=e⁻¹ mod (q-1).
+
+A envía a B el mensaje m cifrado como m^(eA) mod q.
+B sobre-cifra el valor y devuelve a A s=m^(eAeB) mod q
+A elimina su clave al enviar r = s^(dA) mod q
+B recibe r y calcula r^(dB) mod q
+
+3. Valoración del ProtocoloFundamento de Seguridad: Se basa en la función unidireccional del logaritmo discreto777777777. Es difícil calcular $x$ (el exponente) si solo se conoce el resultado de la potencia $b^x$ en un grupo finito888888888.+4Mejora: Fue planteado como una posible mejora del protocolo de Shamir999999999.+2Requisito de Interacción: A diferencia de otros sistemas, requiere que el receptor devuelva el mensaje cifrado al emisor (es un protocolo de tres pasos)101010101010101010.+2Condiciones de Seguridad: Para que sea seguro, el cardinal $q$ debe ser un primo muy elevado11111111.+1

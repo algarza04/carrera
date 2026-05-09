@@ -1,0 +1,3 @@
+Enunciado: Crea un programa que lance un proceso hijo.
+
+Padre: Abre un archivo llamado datos.txt. Bloquea el archivo para escritura usando fcntl. Escribe una cadena. Desbloquea. Envía una señal SIGUSR1 al hijo. 2. Hijo: Está esperando la señal SIGUSR1 usando sigsuspend. Cuando la recibe, proyecta el archivo datos.txt en memoria con mmap, lee el contenido (ahora accesible como puntero) e imprime por pantalla el mensaje del padre.

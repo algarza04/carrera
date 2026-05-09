@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 7</title>
+    <style>
+        .menu li { float: left; }
+
+        nav {
+            text-align: right;
+            background-color: burlywood;
+        }
+
+        ul {
+            list-style: none;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        a{
+            background-color: dodgerblue;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            font-family: sans-serif;
+            display: block;
+            padding: 20px;
+            margin : 0px 10px;
+            border-radius: 5px;
+        }
+     
+        a:hover {
+            background-color: darkred !important;
+            border-radius: 25px;
+            margin: 0px;
+            padding-right: 30px;
+            padding-left: 30px;
+            box-shadow: 0px 0px 5px 5px grey;
+        }
+
+        a.activo {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <nav class="menu">
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#" class="activo">Sobre mi</a></li>
+            <li><a href="#">Formación</a></li>
+            <li><a href="#">Aficiones</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
+    <div>
+        <p>... continua la página ...</p>
+    </div>
+</body>
+</html>

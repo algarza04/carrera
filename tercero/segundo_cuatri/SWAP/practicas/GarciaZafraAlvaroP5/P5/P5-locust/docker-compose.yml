@@ -1,0 +1,35 @@
+# establecemos la red web como externa
+networks:
+  red_web:
+    external: true
+
+services:
+  # Ejecuta Locust en modo master, en el puerto 8089
+  # Monta el locustfile.py que hemos implementado en el dir /mnt/locust
+  # Por último se asigna una dirección IP estática de la red web
+  master-algarza04:
+    image: locustio/locust
+    ports:
+      - "8089:8089"
+    volumes:
+      - ./:/mnt/locust
+    command: -f /mnt/locust/locustfile.py --master
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.70
+
+  #Este servicio lanza 6 réplicas de workers locust, conectados a master
+  #Todos ellos utilizan el mismo script .py que el servicio master
+  worker-algarza04:
+    image: locustio/locust
+    volumes:
+      - ./:/mnt/locust
+    command: -f /mnt/locust/locustfile.py --worker --master-host master-algarza04
+    depends_on:
+      - master-algarza04
+    deploy:
+      replicas: 6
+    networks:
+      - red_web
+
+      

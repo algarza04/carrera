@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}Tienda{% endblock %}</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="/static/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@unocss/reset/tailwind.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+      div img {
+        height: max-content;
+      }
+      .navbar .d-flex {
+        margin-left: 1.5rem; /* separa el buscador del botón Tienda */
+      }
+      .card:hover {
+        box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.15);
+        transform: translateY(-3px); /* Pequeño levantamiento visual */
+      }
+      .card {
+        transition: all 0.2s ease-in-out; /* Transición suave para todos los cambios */
+      }
+      .btn_carrito {
+        border: 1px solid #0b8a2b;
+        background-color: white;
+        color: #0b8a2b;
+        border-radius: 25px;
+      }
+      .btn_carrito:hover {
+        background-color: #6fd689;
+        color: black;
+        border: 1px solid #0b8a2b;
+      }
+      .btn_carrito:first-child:active {
+        background-color: #6fd689;
+        color: black;
+        border: 1px solid #0b8a2b;
+      }
+      .btn_editar_precio {
+        border: 1px solid orange;
+        background-color: white;
+        color: orange;
+        border-radius: 25px;
+      }
+      .btn_editar_precio:hover {
+        background-color: rgb(240, 198, 121);
+        color: black;
+        border: 1px solid orange;
+      }
+      .btn_editar_precio:first-child:active {
+        background-color: rgb(240, 198, 121);
+        color: black;
+        border: 1px solid orange;
+      }
+      .lupa:hover {
+        background-color: #6eb17e;
+        color: black;
+        border: 1px solid #0b8a2b;
+      }
+      .lupa {
+        border: 1px solid #0b8a2b;
+        background-color: white;
+        color: #0b8a2b;
+        border-radius: 10px;
+      }
+      .btn_registro_login {
+        border: 1px solid #0b8a2b;
+        background-color: #0b8a2b;
+        color: white;
+        border-radius: 25px;
+      }
+    </style>
+    {% block head %}{% endblock %}
+
+    <script defer src="/static/js/cambio-precio.js"></script>
+  </head>
+  <body>
+    <!-- Barra superior -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+      <div class="container">
+        <a class="navbar-brand" href="/">Tienda</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMain"
+          aria-controls="navMain"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a class="navbar-brand" href="/ofertas">Oferta</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMain"
+          aria-controls="navMain"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="relative w-full max-w-2xl mx-4">
+            {% block buscador %}
+            <div class="relative">
+                <input
+                    type="text"
+                    class="w-full pl-10 pr-4 py-2 border-2 border-green-500 rounded-full text-gray-900 placeholder-gray-500 focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600 transition shadow-md"
+                    placeholder="Escribe para buscar..."
+                    autocomplete="off"
+                    onfocus="if(window.location.pathname !== '/busqueda-anticipada') { window.location.href='/busqueda-anticipada'; }"
+                />
+            </div>
+            {% endblock %}
+        </div>
+
+        <i class="bi bi-cart3"></i>
+
+        <div class="ms-3">
+          <ul class="navbar-nav d-flex align-items-center gap-2">
+            <li class="nav-item ">
+              {% if usuario %} {{ usuario }}
+              <a
+                class="btn position-relative  {% if totalArticulos > 0 %} btn-success resaltado-carrito-btn {% else %} btn-warning {% endif %}"
+                href="/usuarios/logout"
+                title="Cerrar sesión ({{ usuario }})"
+                style="background-color: red; border: red"
+              >
+                <img
+                  src="/icons/cerrar_sesion.svg"
+                  alt="Usuario conectado"
+                  width="20"
+                  height="20"
+                  class="me-1"
+                />
+              </a>
+
+              {% else %} {# Bloque NO el usuario no está logueado #}
+              <a
+                class="btn position-relative d-flex align-items-center gap-2 {% if totalArticulos > 0 %} btn-success resaltado-carrito-btn {% else %} btn-warning {% endif %}"
+                href="/usuarios/login"
+                title="Iniciar sesión"
+                style="background-color: silver; border: black;"
+              >
+                Login
+                <img
+                  src="/icons/usuario.svg"
+                  alt="Iniciar sesión"
+                  width="15"
+                  height="15"
+                  class="me-1"
+                />
+              </a>
+
+              {% endif %}
+            </li>
+          </ul>
+        </div>
+
+        <div class="ms-3">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a
+                class="btn position-relative d-flex align-items-center {% if totalArticulos > 0 %} btn-success resaltado-carrito-btn {% else %} btn-warning {% endif %}"
+                href="/carrito"
+                title="Total: {{ precioTotal| round(2) |default('0.00') }} €"
+              >
+                <img
+                  src="/icons/carrito.svg"
+                  alt="Carrito de compra"
+                  width="14"
+                  height="14"
+                  class="me-1"
+                />
+                {% if totalArticulos > 0 %} Carrito ({{ totalArticulos }} - {{
+                precioTotal | round(2) }} €) {% else %} Carrito {% endif %} {%
+                if totalArticulos > 0 %}
+                <span
+                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                >
+                  {{ totalArticulos }}
+                  <span class="visually-hidden">artículos en el carrito</span>
+                </span>
+                {% endif %}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main class="container">{% block content %}{% endblock %}</main>
+
+    <footer class="text-center">
+      <div class="container">
+        <hr />
+        <small class="text-muted">Práctica DAI - Tienda online</small>
+      </div>
+    </footer>
+
+    <script src="/static/bootstrap.bundle.min.js"></script>
+    {% block scripts %}{% endblock %}
+  </body>
+</html>

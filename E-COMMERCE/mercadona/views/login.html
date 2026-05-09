@@ -1,0 +1,46 @@
+{% extends "base.html" %} {% block title %} Login {% endblock %} {% block
+content %}
+<div
+  class="container wrapper d-flex align-items-center justify-content-center h-100"
+>
+  <div class="card login-form">
+    <div class="card-body">
+      <h5 class="card-title text-center">Iniciar Sesión</h5>
+
+      {% if error %}
+      <div class="alert alert-danger" role="alert">{{ error }}</div>
+      {% endif %} 
+
+      <form method="POST" action="/usuarios/login">
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input
+            type="text"
+            class="form-control {% if error %}is-invalid{% endif %}"
+            id="username"
+            name="username"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control {% if error %}is-invalid{% endif %}"
+            id="password"
+            name="password"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 btn_registro_login">Entrar</button>
+
+        <div class="sign-up mt-4">
+          ¿No tienes cuenta? <a href="/usuarios/registro">Regístrate</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

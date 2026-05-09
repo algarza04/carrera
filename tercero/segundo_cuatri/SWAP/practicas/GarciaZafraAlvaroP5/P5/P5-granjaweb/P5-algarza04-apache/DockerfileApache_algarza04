@@ -1,0 +1,44 @@
+# El contenedor se crea a partir de la última imagen Debian
+FROM debian:latest
+
+# Indica que no se solicitará interacción con el usuario durante la instalación de paquetes
+ENV DEBIAN_FRONTEND=nointeractive
+
+# Instalar las dependencias necesarias
+# (servidor web Apache, PHP, paquete de PHP para Apache, la herramienta ping e iptables, además limpia la cache)
+RUN apt-get update && apt-get install -y apache2 php libapache2-mod-php iputils-ping iptables && \
+    rm -rf /var/lib/apt/lists/*
+
+# Copia el .php al directorio de Apache que contiene los ficheros html
+COPY P5-algarza04-apache/web_algarza04/index.php /var/www/html/
+
+# Copiar certificado y clave privada
+COPY P5-algarza04-certificados/certificado_algarza04.crt /etc/apache2/ssl/certificado_algarza04.crt
+COPY P5-algarza04-certificados/certificado_algarza04.key /etc/apache2/ssl/certificado_algarza04.key
+
+# Incluir la configuración SSL
+COPY P5-algarza04-apache/algarza04-apache-ssl.conf /etc/apache2/sites-available/algarza04-apache-ssl.conf
+
+# Copiar script de entrada entrypoint y script de reglas iptables
+COPY P5-algarza04-apache/P5-algarza04-iptables-web/entrypoint.sh /entrypoint.sh
+COPY P5-algarza04-apache/P5-algarza04-iptables-web/algarza04-iptables-web.sh /algarza04-iptables-web.sh
+
+#Instalar módulo y habilitar sitio SSL por defecto
+# Configurar los permisos adecuados para el certificado
+# Dar permisos de ejecución a los scripts iptables
+RUN a2enmod ssl && a2ensite default-ssl && \
+    chmod 600 /etc/apache2/ssl/certificado_algarza04.crt && \
+    chmod +x /entrypoint.sh /algarza04-iptables-web.sh 
+
+# Configurar el script de entrada
+ENTRYPOINT ["/entrypoint.sh"]
+
+# Exponer el puerto  HTTP y HTTPS
+EXPOSE 80
+EXPOSE 443
+
+# Inicia el servidor Apache en primer plano y mantiene el contenedor en ejecución(tail -f /dev/null)
+CMD apache2ctl -D FOREGROUND && tail -f /dev/null
+
+
+

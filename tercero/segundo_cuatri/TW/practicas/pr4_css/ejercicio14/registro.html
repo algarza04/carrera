@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+    <link rel="stylesheet" href="ejercicio14.css">
+</head>
+<body>
+    <header>
+        <img src="imagenes/log_centro.png" alt="Logotipo centro">
+        <h1>Formulario de Registro</h1>
+    </header>
+
+    <main>
+        <h2>Registro de usuario</h2>
+        <form action="../ficheros/procesar.php" method="get">
+            <label>Nombre:
+                <input type="text" name="nombre" size="20" placeholder="El nombre es obligatorio" required>
+            </label>
+
+            <label>Apellidos:
+                <input type="text" name="apellidos" size="30" placeholder="El apellido es obligatorio" required>
+            </label>
+
+            <label>E-mail:
+                <input type="email" name="email" id="email" size="30" placeholder="e-mail obligatorio" required>
+            </label>
+
+            <label>Contraseña:
+                <input type="password" name="clave" maxlength="8" size="12" required placeholder="Escriba la clave">
+            </label>
+
+            <fieldset>
+                <input type="submit" value="Registrarse">
+            </fieldset>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ETSIIT - Universidad de Granada</p>
+        <a href="adaptabilidad.html">Características de CSS adaptable</a>
+    </footer>
+</body>
+</html>

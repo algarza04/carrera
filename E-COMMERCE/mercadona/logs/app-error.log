@@ -1,0 +1,9 @@
+{"level":"error","message":"Cast to ObjectId failed for value \"691f74f4aac8574447f54a2823333333333333\" (type string) at path \"_id\" for model \"Producto\"","timestamp":"2025-11-21T16:56:40.845Z"}
+{"level":"error","message":"Cast to ObjectId failed for value \":id\" (type string) at path \"_id\" for model \"Producto\"","timestamp":"2025-11-21T17:31:08.114Z"}
+{"level":"error","message":"Cast to ObjectId failed for value \"{id}\" (type string) at path \"_id\" for model \"Producto\"","timestamp":"2025-11-21T17:35:18.974Z"}
+{"level":"error","message":"Cast to ObjectId failed for value \"{id}\" (type string) at path \"_id\" for model \"Producto\"","timestamp":"2025-11-21T17:38:34.640Z"}
+{"level":"error","message":"Cast to ObjectId failed for value \"{id}\" (type string) at path \"_id\" for model \"Producto\"","timestamp":"2025-11-21T17:52:38.420Z"}
+{"level":"error","message":"Cast to ObjectId failed for value \"{id}\" (type string) at path \"_id\" for model \"Producto\"","timestamp":"2025-11-21T18:05:06.367Z"}
+{"level":"error","message":"Cast to ObjectId failed for value \"busqueda_anticipada\" (type string) at path \"_id\" for model \"Producto\"","timestamp":"2025-12-12T08:33:46.098Z"}
+{"level":"error","message":"Cast to ObjectId failed for value \"busqueda-anticipada\" (type string) at path \"_id\" for model \"Producto\"","timestamp":"2025-12-12T08:33:54.071Z"}
+{"level":"error","message":"Cast to ObjectId failed for value \"busqueda-anticipada\" (type string) at path \"_id\" for model \"Producto\"","timestamp":"2025-12-12T08:38:26.368Z"}

@@ -1,0 +1,242 @@
+¿Qué es sql?
+	Structured Query Language
+	Nos permite trabajar con bases de datos relacionales.
+	
+Crear base de datos:
+	CREATE DATABASE "USUARIO"
+	
+Tipos de datos:
+	INTEGER -> int
+	TEXT -> texto
+	BLOB -> binario
+	REAL -> float, valores con coma
+	NUMERIC -> números con precisión numérica muy alta, por ejemplo pi, no tiene limite por lo q es más lento
+	
+Crear tabla:
+	CREATE TABLE "usuarios" (
+		"nombre"	TEXT,
+		"DNI"	INTEGER,
+		"edad"	INTEGER DEFAULT 15	//la edad por defecto es 15
+	);
+	
+	En las tablas un campo equivale a una columna
+	Un registro es una fila, contiene la información de cada uno de los campos
+	El valor del campo es lo que contiene un apartado, un determinado registro con un determinado campo, por ej casilla 1,1
+
+DESCRIBE nombre_tabla
+
+Hacer consulta:
+	SELECT * FROM usuarios	//selecciona todo de la tabla usuarios
+	
+Insertar datos:
+	INSERT INTO usuarios (nombre, apellido, edad)
+	VALUES ('Alvaro', 'García', 20), 
+	 		 ('Quique', 'Zafra', 29),
+			 ('Manolo', 'Martínez', 25),
+			 ('Alba', 'Aguilar', 24)
+			
+Eliminar datos de una tabla:
+	DELETE FROM usuarios
+			 
+Identificadores:
+	CREATE TABLE "usuarios" (
+		"id_usuario" INTEGER,
+		"nombre"	TEXT,
+		"DNI"	INTEGER,
+		"edad"	INTEGER, 
+		PRIMARY KEY("id_usuario" AUTOINCREMENT)	//no permite que tenga valores repetidos, a cada usuario le va a asociar un número
+	);
+	
+	si queremos usar el id_usuario de otra tabla ambas tienen que tener el mismo nombre, en esta tabla la clave primaria pasa a ser clave foranea ya que puede que se repitan los datos, por ej si creamos una tabla de consultas médicas en la que usamos a las personas de usuarios, una persona con identificdor id puede acudir varias veces a la consulta, por lo que no es primaria
+	
+Para cambiar el nombre de un atributo de forma temporal:
+	SELECT LastName AS apellido FROM Employees //nos creará una tabla llamada apellido con los atributos de lastName
+
+Podemos cambiar el nombre de una tabla:
+	FROM [OrderDetails] OD
+Ordenar una tabla en el orden de un atributo(ej orden ascendente precio)
+	SELECT * FROM Products
+	ORDER BY Price	//por defecto lo ordena ascendente recomendable poner ASC después de Price
+	ORDER BY RANDOM()
+	
+	Tipos:
+		ASC: ascendente	//ej en texto nulos, num, car especiales, letras
+			SELECT * FROM Products
+			ORDER BY ProductName ASC NULLS LAST	//ordena de manera ascendente pero manda a los null al final
+			
+		DESC: descendente
+		
+Para no seleccionar atributos repetidos en una tabla:
+	SELECT DISTINCT ProductName FROM Products	//si hay dos nombres iguales o dos o varios null solo muestra uno   
+		
+Condiciones:(DELETE FROM Products elimina todo, por lo que necesita condiciones)
+	WHERE
+		SELECT * FROM Products 
+		WHERE ProductID = 14 //devuelve la inf del atributo cuyo productID=14
+		
+		SELECT * FROM Products 
+		WHERE ProductName = 'Tofu'	//devuelve la inf del atributo cuyo nombre coincida
+		
+		WHERE Price > 40 AND Price < 50//devuelve todos los priductos cuyo precio sea mayor a 40 y menor que 50
+		
+		DELETE FROM turnos_medicos
+		WHERE id_turno = 3	// elimina el registro con id_turno 3
+		
+		UPDATE turnos_medicos SET horario = "10:30"
+		WHERE id_turno = 2	//actualiza el horario del registro con id_turno 2
+		
+		UPDATE Products SET ProductName = "Schoggi"
+		WHERE ProductName = "Schoggi Schokolade"; //actualiza el nombre a Schoggi
+		
+		Poner un máximo de salidas(por ejemplo q imprima 5 registros)
+			SELECT * FROM Customers 
+			WHERE CustomerID >= 50 AND NOT Country = "Germany"
+			LIMIT 5	//imprime 5 registros con 50 o más de id y que no sean de alemania
+
+Para seleccionar entre rangos BETWEEN(incluye los limites q le pongamos)
+	SELECT * FROM Products WHERE Price BETWEEN 20 AND 40	//selecciona los productos que estén en ese rango de precios le podemos añadir AND CategoryID = 6 seleccionará solo de este tipo
+	Podemos buscar entre dos fechas de nacimiento 
+		SELECT * FROM Employees WHERE BirthDate BETWEEN "1960-0-1" AND "1970-0-1"
+		
+LIKE permite realizar busquedas de texto parcial
+	SELECT * FROM Employees WHERE LastName LIKE "Fuller"	//devuelve a quién tenga el nombre Fuller
+	SELECT * FROM Employees WHERE LastName LIKE "%ller"	//devuelve a quién termine su nombre por ller
+	SELECT * FROM Employees WHERE LastName LIKE "F____r"  //devuelve a quien empiece por F, acabe por r y tenga 4 letras entre estas
+	
+Devolver solo valores null o no null
+	SELECT * FROM Products 
+	WHERE ProductName IS NULL
+	ORDER BY ProductName ASC	
+	
+	SELECT * FROM Products 
+	WHERE ProductName IS NOT NULL
+	ORDER BY ProductName ASC
+	
+	
+Operador IN
+	SELECT * FROM Products
+	WHERE SupplierID IN (3,4,5,6)	//devuelve todos los productos cuyo supplierid sea 3 o 4 o 5 o 6
+	
+	
+	
+Como saber cuantos elementos hay en una tabla
+	SELECT count(firstName) AS CantidadNombres FROM Employees // le da el nombre de CantidadNombres
+		
+Como sumar todos los elementos de una tabla
+	SELECT SUM(Price) FROM Products
+	
+Calcular el promedio
+	SELECT AVG(Price) FROM Products
+	
+Redondear 
+	SELECT ROUND(AVG(Price)) AS Promedio FROM Products
+	
+	Podemos seleccionar el número de decimales que queremos
+			SELECT ROUND(AVG(Price), 4) AS Promedio FROM Products
+			
+MIN Y MAX
+	SELECT MIN(Price) AS MIN FROM Products
+	
+GROUP BY (agrupar por un atributo y devuelve el primer valor de cada uno, por ej si le pedimos el nombre nos va a devolver el nombre del primero)
+	CON EL WHERE NO PODEMOS HACER REFERENCIA A UNA FUNCIÓN DE AGRUPACIÓN, POR LO Q TENEMOS QUE USAR HAVING Q A DIFERENCIA DE WHERE ESTE FILTRA POR GRUPOS EN VEZ DE POR REGISTROS
+	
+		SELECT SupplierID, ROUND(AVG(Price)) AS promedioID FROM Products
+		GROUP BY SupplierID
+		ORDER BY promedioID DESC 	//va a realizar el promedio del precio de cada supplierID
+		
+		SELECT SupplierID, ROUND(AVG(Price)) AS promedioID FROM Products
+		WHERE ProductName IS NOT NULL
+		GROUP BY SupplierID
+		HAVING promedioID > 40		//podemos usar clausulas como between HAVING promedioID BETWEEN 40 AND 150
+		ORDER BY promedioID DESC	//devolvera los que tengan un promedio mayor a 40
+		
+		SELECT ProductID, SUM(Quantity) AS cantidadTotal FROM OrderDetails
+		GROUP BY ProductID
+		ORDER BY cantidadTotal DESC //suma las cantidades y las divide por productid
+		LIMIT 1 //nos devolverá el producto más vendido
+		
+SUBCONSULTAS(consulta dentro dde otra consulta)
+	SELECT ProductID, 
+		Quantity,
+		(SELECT ProductName FROM Products WHERE OrderDetails.ProductID = ProductID) AS nombre
+	FROM OrderDetails //va a mostrar una tabla con producid, con su cantidad y su nombre
+	
+	SELECT ProductID, SUM(Quantity) as total_vendido,
+		(SELECT Price FROM Products where OD.ProductID = ProductID) as precio,
+		SUM((Quantity)) * (SELECT Price FROM Products where OD.ProductID = ProductID) as total_recaudado
+	FROM [OrderDetails] OD
+	GROUP by ProductID	//crea una tabla con el total vendido
+	HAVING total_recaudado < 100 // nos devuelve los que hayan recaudado menos de 100
+	
+	Ordenar por un atributo de la tabla sin mostrarlo
+		SELECT ProductID, SUM(Quantity) as total_vendido,
+			(SELECT ProductName FROM Products where OD.ProductID = ProductID) as name,
+			SUM((Quantity)) * (SELECT Price FROM Products where OD.ProductID = ProductID) as total_recaudado
+		FROM [OrderDetails] OD
+		WHERE (SELECT Price FROM Products where OD.ProductID = ProductID) > 40
+		GROUP by ProductID	
+	
+	SELECT SUM(Quantity*(SELECT Price FROM Products where OrderDetails.ProductID = ProductID)) from OrderDetails //nos da la suma del total vendido
+
+	
+JOINS	
+	CROSS JOIN //devuelve las dos tablas multiplicads(si una tiene 20 y la otra 10 registros devuelve 200)
+	INNER JOIN	//muestran solo las coincidedncias al usar el on(intersección)
+		SELECT * FROM Employees e
+		INNER JOIN Orders o ON e.EmployeeID = o.EmployeeID	//solo devuelve las ordenes en las que EmployeeID es el mismo en las dos
+	LEFT JOIN	//muestra una tabla y parte de la otra, si tiene lo que pedimos de la otra la muestra
+	
+	SELECT FirstName, LastName, Reward, Month from Employees e
+	LEFT join Rewards r on e.EmployeeID = r.EmployeeID//RIGTH join devuelve la otra tabla si no se puede usar cambiamos el orden de las tablas 
+	
+	FULL JOIN	//devuelve todo(la unión) si no puede usarse se hace
+		SELECT FirstName, LastName, Reward, Month from Employees e
+		LEFT join Rewards r on e.EmployeeID = r.EmployeeID
+		UNION
+		SELECT FirstName, LastName, Reward, Month from Rewards r
+		LEFT join Employees e on e.EmployeeID = r.EmployeeID	//esta tabla devuelve todos los trabajadores y si han ganaddo o no, si en algún mes no hay ganador devuelve nulos los valores nombre, reward...
+		
+UNION	//sirve para combinar tablas si se repiten filas devuelve solo una	las tablas tienen que tener las mismas columnas, ej alumno y grado
+UNION ALL // combina tablas, a diferencia del otro si repite las filas
+MINUS
+INTERSECT
+
+CARDINALIDAD
+	1:1	//un registro se relaciona co  otro de otra tabla
+	1:n	//un regiistro se relaciona con muchos registros de otra tabla
+	n:n	//un registro de una tabla se ralaciona con varios registros de otra tabla y viceversa
+	
+NORMALIZACIÓN	//asegurar la eficiencia de la base de datos
+	forma normal 1	//consiste en garantizar que cada atributo en una tabla tenga un valor único atómico, no debería haber atributos repetidos en una fila para una clave primaria, por ej, tener una columna con dni, otra con nombre y otra con apellido
+		
+	forma normal 2	//cada atributo que no sea una clave debe depender de la clave primaria, por ej en una tabla PedidoID, ClienteID, Fecha del pedido, ProductoID, Nombre del producto, Precio del producto, Cantidad del producto, no cumple la segunda forma normal ya que Nombre del producto y Precio del producto no dependen al 100% de PedidoID, sino que dependen también de ProductoID, lo que hace que deban estar en otra tabla
+	
+	forma normal 3	// cada atributo debe depender directamente de la clave primaria y no de atributos que no sean claves primarias, dependencia transitiva, que dependa del atributo que dependa del principal
+	
+	forma normal 4	// busca evitar la redundancia de datos, cada tabla debe tener una clave primaria compuesta, consta de múltiples columnas en lugar de una sola, por ej, tenemos una tabla con ID_Producto, Nombre, Categoría, Subcategoría, como subcategoría depende de Categoría tenemos que dividirlo en 2 tablas, por un lado ID_Principal y Nompre_Principal y por otro ID_Subcategoría, ID_Principal y Nombre_Subcategoría
+	
+	forma normal 5	
+	
+INDICES	//tiene el objetivo de mejorar el rendimiento organizandolos correctamente 
+	CREATE INDEX nombre on Products (ProductName)	//productName es el nombre del atributo de la tabla
+	CREATE UNIQUE INDEX nombre on Products (ProductName) 	//no inserta los valores duplicados
+	CREATE UNIQUE INDEX nombre on Employees (firstname, lastname)	//permite que tengan el mismo nombre o apellido pero no el mismo nombre y apellido
+	
+	DROP INDEX nombre
+	
+VISTAS
+	CREATE VIEW Productos_simplificados AS
+	SELECT ProductID, ProductName, Price FROM Products
+	WHERE ProductID > 20
+	ORDER BY ProductID DESC	// a partir de ahora Productos simplificados se podrá usar como una tabla con los datos de la salida que le hemos pasado
+	
+	Si hay una tabla con el mismo nombre le da prioridad a la vista
+	
+	DROP VIEW Productos_simplificados
+	DROP VIEW IF EXISTS Productos_simplificados
+	
+BLOQUEOS
+	BEGIN	//comienzo el cambio
+	ROLLBACK	//deshago todo desde q inicio el cambio
+	COMMIT	//guardo el cambio
+

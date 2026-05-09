@@ -1,0 +1,80 @@
+{% extends "base.html" %} {% block title %}Portada - Tienda{% endblock %} {%
+block content %}
+<div class="py-4 text-center">
+  <h1 style="color: #0b8a2b">Productos</h1>
+  <p class="lead">Productos destacados</p>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% if productos and productos | length > 0 %} {% for p in productos %}
+  <div class="col">
+    <div class="card h-100">
+      {% if p.url_img %}
+      <img src="{{ p.url_img }}" class="card-img-top" alt="{{ p.texto_1 }}" />
+      {% else %}
+      <img
+        src="/static/placeholder.png"
+        class="card-img-top"
+        alt="sin imagen"
+      />
+      {% endif %}
+      <div class="card-body">
+        <h5 class="card-title">{{ p.texto_1 }}</h5>
+        <p class="card-text">{{ p.texto_2 | default('Sin descripción') }}</p>
+
+        <div>
+          {% if p.precio_rebajado != 0 %}
+          <del style="font-size: small">{{ p.precio_euros }} €</del>
+          <strong style="color: red; font-size: large"
+            >{{ p.precio_rebajado }} €</strong
+          >
+          {% elseif p.precio_euros is defined %}
+          <strong>{{ p.precio_euros }} €</strong>
+          {% else %}
+          <strong>Sin precio</strong>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="px-3">
+        {% if p._id %} {% if usuario and admin == true %}
+        <div class="mb-2" style="width: 75px;">
+          <input
+            type="number"
+            step="0.01"
+            class="form-control input_precio"
+            value="{{ p.precio_rebajado if p.precio_rebajado != 0 else p.precio_euros }}"
+            data-id="{{ p._id }}"
+          />
+        </div>
+        <div class="d-flex mb-2">
+          <a
+            class="btn btn-primary btn_editar_precio mb-2 w-100"
+            title="Cambiar precio"
+            data-id="{{ p._id }}"
+          >
+            Cambiar precio
+          </a>
+        </div>
+        {% endif %}
+
+        <div class="d-flex mb-2">
+          <a
+            href="/al_carrito/{{ p._id }}"
+            class="btn btn-primary btn_carrito mb-2 w-100"
+          >
+            Añadir al Carro
+          </a>
+        </div>
+
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %} {% else %}
+  <div class="col-12">
+    <div class="alert alert-info">No hay productos para mostrar.</div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

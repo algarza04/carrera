@@ -1,0 +1,16 @@
+.imagen {
+    background-color: beige;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    border: 1px solid black;
+    padding: 5px;
+    margin: 10px;
+}
+
+img {
+    background-color: white;
+    border: 1px lightgrey;
+    padding: 5px;
+    width: calc(100% - 50px);
+    height: calc(100% - 50px);
+}

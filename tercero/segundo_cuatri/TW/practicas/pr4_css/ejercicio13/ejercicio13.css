@@ -1,0 +1,98 @@
+*{
+    box-sizing: border-box;
+}
+html, body {
+    display: block;
+    height: 100%;
+}
+header{
+    display: block;
+    height: 150px;
+    background-color: lightsteelblue;
+    border: 0;
+    margin: 0;
+}
+
+h1 {
+    margin: 0 20px ;
+}
+
+header div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin:0;
+    height: 80%;
+}
+
+header div img {
+    width: 100px;
+    height: 100px;
+}
+
+nav {
+    height: 20%;
+}
+nav ul {
+    display: flex;
+    list-style: none;
+    display: flex;
+    background-color: pink;
+    margin: 0;
+    height: 100%;
+    align-items: center;
+}
+nav ul li a {
+    margin: 0 5px;
+    text-decoration: none;
+    color: blue;
+}
+main {
+    display: flex;
+}
+#animales {
+    display: flex;
+    align-items: baseline;
+    width: 90%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.imagen {
+    border: 1px solid black;
+    max-width: 150px;
+    text-align: center;
+    display: inline-block;
+    margin: 5px;
+    overflow: hidden;
+}
+img {
+    height: auto;
+    width: 100%;
+}
+
+aside {
+    text-align: left;
+    width: calc(10% + 35px);
+    background-color: grey;
+    padding: 10px;
+    flex-shrink: 0;
+}
+ul {
+    list-style: none;
+    text-align: left;
+    padding-left: 0;
+    width: 100%;
+}
+
+footer {
+    text-align: center;
+    background-color: forestgreen;
+    height: 25px;
+}
+footer p {
+    margin-top: 0;
+    margin-bottom: 0;
+}

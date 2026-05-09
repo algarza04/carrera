@@ -1,0 +1,139 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    border: black 1px solid;
+    font-family: sans-serif;
+    display: block;
+}
+
+h1{
+    background-color:  saddlebrown;
+    color: white;
+    margin: 0;
+    padding: 5px;
+}
+
+h2{
+    background-color:  peru;
+    color: white;
+    margin-top: -25px;
+    margin-bottom: 20px;
+    margin: -25px 0 20px 10px;
+    padding: 5px;
+    top: -50px;
+    width: fit-content;
+    border: 1px solid grey;
+    font-size: 20px;
+}
+section{
+    background-color: moccasin;
+    border: 1px solid grey;
+    margin: 25px 5px;
+    padding: 5px 10px 5px 0px;
+}
+
+.datos_personales div {
+    background-color: rgb(204, 171, 115);
+    display: inline-block;
+    margin: 5px;
+    width: 100%;
+    padding: 0;
+}
+
+div .alinear_datos {
+    margin: 0;
+    border-left: 3px solid sienna;
+    width: 50%;
+    float: left;
+    display: inline;
+    padding: 10px;
+}
+
+.datos_acceso label {
+    padding-left: 10px;
+}
+
+p{
+    margin-bottom: 0;
+}
+
+label{
+    display: block;
+    margin-left: 5px;
+}
+
+select{
+    background-color: white;
+    border: 1px solid grey;
+}
+
+.datos_adicionales1, .datos_adicionales2 {
+    padding: 10px;
+    width: calc(50% - 10px);
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 0;
+}
+
+.datos_adicionales1 h2, .datos_adicionales2 h2 {
+    margin: -30px 0 0 0;
+}
+
+
+.botones_contenedor{
+    text-align: center;
+    border: 0;
+    margin: 0px;
+    padding: 0px;
+    background-color: white;
+}
+.boton {
+    margin: 25px 10px 5px;
+    background-color: whitesmoke;
+    border: 1px solid grey;
+    color: dimgrey;
+}
+
+section:not(.botones_contenedor):hover {
+    border: 5px solid saddlebrown;
+}
+
+.datos_personales:hover::after {
+    content: "Indique sus datos personales";
+    color: saddlebrown;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.datos_acceso:hover::after {
+    content: "Indique cuales van a ser sus datos de acceso";
+    color: saddlebrown;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.datos_adicionales1:hover::after {
+    content: "Este dato nos permitrá saber en que idioma desea comunicarse";
+    color: saddlebrown;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.datos_adicionales2:hover::after {
+    content: "Este dato no es obligatorio pero nos facilitará el envio de la publicidad personalizada"; 
+    color: saddlebrown;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.boton:hover {
+    background-color: saddlebrown;
+    color: white;
+    
+}

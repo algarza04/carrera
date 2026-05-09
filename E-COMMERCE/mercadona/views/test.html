@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block title %}Test - Plantillas{% endblock %} {%
+block content %}
+<div class="py-4">
+  <h2>Plantilla de test</h2>
+  <p>
+    Esta plantilla sirve para comprobar que Nunjucks está funcionando
+    correctamente.
+  </p>
+
+  <h5>Variables de ejemplo</h5>
+  <ul>
+    <li>Nombre: <strong>{{ nombre or 'Sin nombre' }}</strong></li>
+    <li>Edad: <strong>{{ edad | default('no definida') }}</strong></li>
+  </ul>
+
+  <p>
+    También puedes renderizar esta vista desde la ruta <code>/test</code> en el
+    servidor.
+  </p>
+</div>
+{% endblock %}

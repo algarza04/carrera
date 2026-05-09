@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 5</title>
+    <style>
+        * {
+            margin: 0; 
+            box-sizing: border-box; /*evita que los bordes y el relleno aumenten el tamaño dentro del ancho especificado*/
+        }
+
+        body {
+            text-align: center;
+        }
+
+        nav {           
+            border: 5px solid;
+            border-color: black ;
+            width: 80%;
+            margin: auto;
+            background-color: lightgrey;
+        }
+
+        p { 
+            border: 5px solid;
+            display: inline-block;
+        }
+
+        p.primero {
+            border-color: red;
+            width: 20%;
+            text-align: left;
+        }
+
+        p.medio {
+            border-color: greenyellow;
+            width: 60%;
+        }
+        
+        p.final {
+            border-color: blue;
+            width: 20%;
+            text-align: right;
+        }
+        
+    </style>
+</head>
+<body>
+    <nav>
+        <p class="primero">Anterior</p><p class="medio">Medio</p><p class="final">Siguiente</p>
+    </nav>
+</body>
+</html>

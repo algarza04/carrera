@@ -1,0 +1,6 @@
+modificacion sobre filosofos con camarero
+
+cuando se siente el filosofo se incrementa el número de comidas repartidas, una vez llegue a 15 comidas, el camarero no podrá sentar a más filósofos, lo que tiene q hacer es ir levantando de la mesa a los que queda, (si estan comiendo terminan de comer, si no los levanta )
+cuando vacie la mesa imprimirá el mensaje
+	el camarero ha vaciado la mesa para reponer el papeo
+se creara una productora que solicite reponer la mesa cuando se quede sin comida, se pondrá una espera que simulará la reposición de la mesa y terminará diciendo que ya ha terminado la reposición. Una vez haya terminado el camarero podrá ir sentando a los filosofos igual que antes, nunca más de 4 y hasta que se sirvan 15 comidas.

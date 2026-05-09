@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 12</title>
+    <link rel="stylesheet" href="ejercicio12.css">
+</head>
+<body>
+    <h1>Registro de usuarios</h1>
+    <form action="../ficheros/procesar2.php" method="POST" enctype="multipart/form-data">        
+        <section class="datos_personales">
+            <h2>Datos personales</h2>
+            <div>
+                <div class="alinear_datos">
+                    <label>Nombre 
+                        <input type="text" name="nombre" size="20" required placeholder="El nombre es obligatorio">
+                    </label>  
+                    <label>Apellidos
+                        <input type="text" name="apellidos" size="30" placeholder="Esto es opcional">
+                    </label>
+                </div>
+                <div class="alinear_datos">
+                    <label>DNI
+                        <input type="text" name="dni" size="9" required>
+                    </label>
+                    <label>Fecha de nacimiento
+                        <input type="date" name="fecha_nacimiento" required>
+                    </label>
+                </div>
+            </div>
+           
+            <div>
+                <div class="alinear_datos">
+                    <label>Nacionalidad
+                        <input type="text" name="nacionalidad" value="España">
+                    </label>
+                    <label>Sexo
+                        <select name="sexo">
+                            <option>Masculino</option>
+                            <option>Femenino</option> 
+                            <option selected value="NA">No deseo responder</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="alinear_datos">
+                    <label>Fotografía
+                        <input type="file" name="foto">
+                    </label>
+                </div>
+            </div>
+        </section>
+        <section class="datos_acceso">
+            <h2>Datos de acceso</h2>
+            <div>
+                <label>E-mail
+                    <input type="email" name="email" size="30" required>
+                </label>
+                <label>Clave
+                    <input type="password" name="clave" size="15" required placeholder="Escriba la clave">
+                </label>
+                <label>(repítala) 
+                    <input type="password" name="clave" size="15" required>
+                </label>
+            </div>
+        </section>
+        <section class="datos_adicionales1">
+            <h2>Datos adicionales 1</h2>
+                <p>Idioma para comunicaciones: </p>
+                <label><input type="radio" name="idioma" value="Español">Español</label>
+                <label><input type="radio" name="idioma" value="Inglés" checked>Inglés</label>
+                <label><input type="radio" name="idioma" value="Francés">Francés</label>
+        </section
+        ><section class="datos_adicionales2">
+                <h2>Datos adicionales 2</h2>
+                <p>Aficiones: </p>
+                <label><input type="checkbox" name="aficiones[]" value="música" >La música</label>
+                <label><input type="checkbox" name="aficiones[]" value="leer" checked >Leer libros</label>
+                <label><input type="checkbox" name="aficiones[]" value="cine" >El cine</label>
+                <label><input type="checkbox" name="aficiones[]" value="deporte" >El deporte</label>
+        </section>
+
+
+
+        <label>Tratamiento de datos
+            <select name="datos_almacenados">
+                <option value="TOTAL">Acepta el almacenamiento de mis datos y el envío a terceros</option>
+                <option value="PARCIAL">Acepta el almacenamiento de mis datos pero no el envío a terceros</option>
+                <option value="NINGUNO">No acepta el almacenamiento ni el envío de datos a terceros</option>
+            </select>
+        </label>
+
+        <div class="botones_contenedor">
+            <input class="boton" type="submit" value="Enviar datos" name="envio">
+            <input class="boton" type="reset" value="Borrar formulario" name="borrar">
+        </div>
+    </form>
+</body>
+</html>

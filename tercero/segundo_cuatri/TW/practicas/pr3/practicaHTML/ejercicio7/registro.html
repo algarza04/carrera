@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+    <style type="text/css">
+        label { display:block; }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="imagenes/log_ugr.png" alt="Logotipo UGR">
+    </header>
+
+    <section>
+        <h2>Registro de usuario</h2>
+        <form action="../ficheros/procesar.php" method="get">
+            <label>Nombre:
+                <input type="text" name="nombre" size="15" placeholder="El nombre es obligatorio" required>
+            </label>
+
+            <label>Apellidos:
+                <input type="text" name="apellidos" size="30" placeholder="El apellido es obligatorio" required>
+            </label>
+
+            <label>E-mail:
+                <input type="email" name="email" id="email" placeholder="e-mail obligatorio" required>
+            </label>
+
+            <label>Contraseña:
+                <input type="password" name="clave" maxlength="8" size="10" required placeholder="Escriba la clave">
+            </label>
+
+            <input type="submit" value="Registrarse">
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 ETSIIT - Universidad de Granada</p>
+    </footer>
+</body>
+</html>

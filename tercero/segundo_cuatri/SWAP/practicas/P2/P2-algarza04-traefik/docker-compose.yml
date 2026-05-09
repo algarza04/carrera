@@ -1,0 +1,193 @@
+networks:
+  red_web:
+    external: true
+  red_servicios:
+    external: true
+
+services:
+  web1:
+    build:
+      context: .
+      dockerfile: DockerfileApache_algarza04
+    image: algarza04-apache-image:p2
+    container_name: web1
+    ports:
+      - 8081:80
+    volumes:
+      - ./web_algarza04:/var/www/html
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.web.rule=Host(`localhost`)"
+      - "traefik.http.services.web.loadbalancer.server.port=80"
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.2
+      red_servicios:
+        ipv4_address: 192.168.20.2
+
+  web2:
+    build:
+      context: .
+      dockerfile: DockerfileApache_algarza04
+    image: algarza04-apache-image:p2
+    container_name: web2
+    ports:
+      - 8082:80
+    volumes:
+      - ./web_algarza04:/var/www/html
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.web.rule=Host(`localhost`)"
+      - "traefik.http.services.web.loadbalancer.server.port=80"
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.3
+      red_servicios:
+        ipv4_address: 192.168.20.3
+
+  web3:
+    build:
+      context: .
+      dockerfile: DockerfileApache_algarza04
+    image: algarza04-apache-image:p2
+    container_name: web3
+    ports:
+      - 8083:80
+    volumes:
+      - ./web_algarza04:/var/www/html
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.web.rule=Host(`localhost`)"
+      - "traefik.http.services.web.loadbalancer.server.port=80"
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.4
+      red_servicios:
+        ipv4_address: 192.168.20.4
+
+  web4:
+    build:
+      context: .
+      dockerfile: DockerfileApache_algarza04
+    image: algarza04-apache-image:p2
+    container_name: web4
+    ports:
+      - 8084:80
+    volumes:
+      - ./web_algarza04:/var/www/html
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.web.rule=Host(`localhost`)"
+      - "traefik.http.services.web.loadbalancer.server.port=80"
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.5
+      red_servicios:
+        ipv4_address: 192.168.20.5
+
+  web5:
+    build:
+      context: .
+      dockerfile: DockerfileApache_algarza04
+    image: algarza04-apache-image:p2
+    container_name: web5
+    ports:
+      - 8085:80
+    volumes:
+      - ./web_algarza04:/var/www/html
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.web.rule=Host(`localhost`)"
+      - "traefik.http.services.web.loadbalancer.server.port=80"
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.6
+      red_servicios:
+        ipv4_address: 192.168.20.6
+
+  web6:
+    build:
+      context: .
+      dockerfile: DockerfileApache_algarza04
+    image: algarza04-apache-image:p2
+    container_name: web6
+    ports:
+      - 8086:80
+    volumes:
+      - ./web_algarza04:/var/www/html
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.web.rule=Host(`localhost`)"
+      - "traefik.http.services.web.loadbalancer.server.port=80"
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.7
+      red_servicios:
+        ipv4_address: 192.168.20.7
+
+  web7:
+    build:
+      context: .
+      dockerfile: DockerfileApache_algarza04
+    image: algarza04-apache-image:p2
+    container_name: web7
+    ports:
+      - 8087:80
+    volumes:
+      - ./web_algarza04:/var/www/html
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.web.rule=Host(`localhost`)"
+      - "traefik.http.services.web.loadbalancer.server.port=80"
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.8
+      red_servicios:
+        ipv4_address: 192.168.20.8
+
+  web8:
+    build:
+      context: .
+      dockerfile: DockerfileApache_algarza04
+    image: algarza04-apache-image:p2
+    container_name: web8
+    ports:
+      - 8088:80
+    volumes:
+      - ./web_algarza04:/var/www/html
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.web.rule=Host(`localhost`)"
+      - "traefik.http.services.web.loadbalancer.server.port=80"
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.9
+      red_servicios:
+        ipv4_address: 192.168.20.9
+        
+  balanceador-traefik:
+    build:
+      context: .
+      dockerfile: DockerfileTraefik_algarza04
+    image: algarza04-traefik-image:p2
+    container_name: traefik
+    ports:
+      - 8090:80
+      - 8080:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik.yml:/etc/traefik/traefik.yml
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.50
+      red_servicios:
+        ipv4_address: 192.168.20.50
+    depends_on:
+      - web1
+      - web2
+      - web3
+      - web4
+      - web5
+      - web6
+      - web7
+      - web8

@@ -1,0 +1,57 @@
+4.
+	Necesita tener tan solo 1
+	Tiene solo uno configurado, el servicio A: 10.5.1.100
+	
+5.
+										IP					Mascara					Default Gateway
+		PC Interfaz Datos		10.5.1.1				/24							10.5.1.100
+		A (Servicios A)
+		
+		PC Interfaz Datos		10.5.2.1				/24							
+		B (Servicios B)
+		
+		PC Interfaz de			172.16.5.1			/24
+		Gestión
+		
+	el unico configurado es el A
+			IP 10.5.1.1	
+			
+6.
+	ping 172.16.5.100 
+	ping 172.16.5.101
+	ping 172.16.5.102
+	
+	las 3 tienen conexión
+	
+10.
+	show ip interface brief
+	
+	Interfaz 						IP					Status					Protocol
+	FastEthernet0/0			10.10.10.1				up							down
+	FastEthernet0/1			172.16.5.100			up							up
+	FastEthernet0/0/0			unassigned				up							up
+	FastEthernet0/0/1			unassigned				up							up
+	FastEthernet0/0/2			unassigned				up							up
+	FastEthernet0/0/3			unassigned				up							down
+	Serial0/1/0					unassigned		administrarively down		down
+	Vlan1							unassigned				up							up
+	Vlan11						10.5.1.100				up							up	
+	Vlan13						10.5.3.100				up							up
+	
+	
+11.
+Comando show ip route
+	Modo	Red				Mascara		Next-HOP						Interface			Metrica
+	C		172.16.5.0		/24			es una ruta directa		FastEthernet0/1	asumimos 0
+	C		10.5.3.0			/24			es una ruta directa		Vlan13				asumimos 0
+	C		10.5.1.0			/24			es una ruta directa		Vlan11				asumimos 0
+	
+	
+	Comando show interfaces FastEthernet0/0
+	MTU 1500B
+	Rxload 1/255
+	Reliability 255/255
+	Txload 1/255
+	BW 100000Kb
+	No, por el numero de entradas de los anteriores
+	Las entradas en modo C son conectadas y las en modo S estaticas

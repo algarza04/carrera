@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block title %}Búsqueda Anticipada{% endblock %}
+
+{% block buscador %}
+<div class="relative">
+    <input
+        type="text"
+        id="inputBusqueda"
+        class="w-full pl-10 pr-4 py-2 border-2 border-green-500 rounded-full text-gray-900 placeholder-gray-500 focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600 transition shadow-md"
+        placeholder="Escribe para buscar..."
+        autocomplete="off"
+        autofocus
+    />
+</div>
+{% endblock %}
+
+
+{% block content %}
+<div class="container mx-auto px-4 pt-10">
+    
+    <div class="text-center mb-8">
+        <h2 id="resultadoTexto" class="text-3xl text-gray-800 font-medium transition-all duration-300">
+            Empieza a escribir...
+        </h2>
+    </div>
+
+    <div id="contenedor-tarjetas" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        </div>
+
+</div>
+
+<template id="plantilla-tarjeta">
+    <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white hover:shadow-xl transition-shadow duration-300 border border-gray-200 flex flex-col h-full">
+        <div class="h-48 w-full flex items-center justify-center bg-gray-50 p-4">
+            <img class="imagen-producto h-full object-contain" src="" alt="Imagen producto">
+        </div>
+        
+        <div class="px-6 py-4 flex-grow">
+            <div class="font-bold text-xl mb-2 text-gray-800 nombre-producto"></div>
+            <p class="text-gray-600 text-sm descripcion-producto mb-4"></p>
+        </div>
+
+        <div class="px-6 pb-6 mt-auto">
+            <div class="mb-4">
+                <span class="precio-original text-gray-400 line-through text-sm mr-2 hidden"></span>
+                <span class="precio-actual text-2xl font-bold text-red-600"></span>
+            </div>
+            
+            <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full transition-colors duration-200 flex items-center justify-center gap-2 boton-anadir">
+                Añadir al carro
+            </button>
+        </div>
+    </div>
+</template>
+{% endblock %}
+
+{% block scripts %}
+<script>    
+    const input = document.getElementById('inputBusqueda');
+    const resultadoTexto = document.getElementById('resultadoTexto');
+    const contenedorTarjetas = document.getElementById('contenedor-tarjetas');
+
+    input.focus();
+
+    input.addEventListener('input', async (e) => {
+        const query = e.target.value.trim();
+
+        if (query.length < 3) {
+            resultadoTexto.textContent = '...';
+            resultadoTexto.className = "text-3xl text-gray-400 font-light";
+            contenedorTarjetas.innerHTML = ''; // Limpiar tarjetas
+            return;
+        }
+
+        try {
+            const response = await fetch(`/api/productos/busqueda-anticipada/${encodeURIComponent(query)}`);
+            
+            if (response.ok) {
+                const productos = await response.json();
+                
+                // Limpiamos el contenedor
+                contenedorTarjetas.innerHTML = '';
+
+                if (productos.length > 0) {
+                    resultadoTexto.textContent = `Encontrados ${productos.length} productos`;
+                    resultadoTexto.className = "text-3xl text-green-600 font-bold mb-8";
+
+                    // crear tarjetas
+                    productos.forEach(p => {
+                        muestraProducto(p);
+                    });
+
+                } else {
+                    resultadoTexto.textContent = `No se encontraron productos para "${query}"`;
+                    resultadoTexto.className = "text-3xl text-red-500 font-medium";
+                }
+            }
+        } catch (error) {
+            console.error(error);
+            resultadoTexto.textContent = "Error de conexión";
+        }
+    });
+
+    function muestraProducto(p) {  								// para cada producto p
+        const template = document.getElementById('plantilla-tarjeta')	// la plantilla
+        const clonado = template.content.cloneNode(true)        // se clona
+
+
+        // Seleccionar elementos dentro del clon
+        const img = clonado.querySelector('.imagen-producto');
+        const nombre = clonado.querySelector('.nombre-producto');
+        const desc = clonado.querySelector('.descripcion-producto');
+        const precioActual = clonado.querySelector('.precio-actual');
+        const precioOriginal = clonado.querySelector('.precio-original');
+        const btn = clonado.querySelector('.boton-anadir');
+
+        // Asignar datos del JSON (Producto.js)
+        img.src = p.url_img || '/static/placeholder.png';
+        nombre.textContent = p.texto_1;
+        desc.textContent = p.texto_2 || '';
+        
+        // Lógica de precio
+        if (p.precio_rebajado && p.precio_rebajado > 0) {
+            precioActual.textContent = p.precio_rebajado + ' €';
+            precioOriginal.textContent = p.precio_euros + ' €';
+            precioOriginal.classList.remove('hidden'); // Mostrar precio tachado
+        } else {
+            precioActual.textContent = p.precio_euros + ' €';
+            precioActual.classList.remove('text-red-600'); // Quitar rojo si no es oferta
+            precioActual.classList.add('text-gray-800');
+        }
+
+        btn.onclick = () => window.location.href = `/al_carrito/${p._id}`;
+
+        // Añadir al DOM
+        contenedorTarjetas.appendChild(clonado);
+    }
+</script>
+{% endblock %}

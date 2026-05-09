@@ -1,0 +1,35 @@
+GET http://localhost:8000/api/productos
+
+###
+
+GET http://localhost:8000/api/productos/691f60cb2d633c7cff858dde
+
+###
+
+POST http://localhost:8000/api/productos
+Content-Type: application/json
+
+{
+    "categoría": "snacks",
+    "subcategoría": "galletas",
+    "url_img": ".",
+    "texto_1": "choco-cookiesss ",
+    "texto_2": "Galletas recubiertas de chocolate",
+    "texto_precio": "3.5€/pack",
+    "precio_euros": "3.5",
+    "precio_rebajado": 0
+}
+
+###
+
+DELETE http://localhost:8000/api/productos/692058a55b8565e3305c8bd0
+
+###
+
+PUT http://localhost:8000/api/productos/691f74f4aac8574447f54a2823333333333333
+Content-Type: application/json
+
+{
+    "texto_precio": "3€/pack",
+    "precio_euros": 3
+}

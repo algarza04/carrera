@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 5.11</title>
+    <style type="text/css">
+        label { display:block; }
+    </style>
+</head>
+<body>
+    <h1>Registro de usuarios</h1>
+    <form action="../ficheros/procesar.php" method="GET">        <!-- novalidate: al incluir novalidate ignora el required que hemos añadido en nombre--> 
+        <label>Nombre: 
+            <input type="text" name="nombre" size="16" required placeholder="El nombre es obligatorio">
+        </label>  
+        <label>Apellidos: 
+            <input type="text" name="apellidos" size="20" placeholder="Este campo es opcional">
+        </label>
+        <label>Control de acceso: 
+            <input type="password" name="clave" maxlength="8" size="10" required placeholder="Escriba la clave">
+        </label>
+
+        <label>Nacionalidad: 
+            <input type="text" name="nacionalidad" value="España">
+        </label>
+        <label>E-mail: 
+            <input type="email" name="email" required placeholder="e-mail obligatorio" >
+        </label>
+
+        <label>Sexo:
+        <select name="sexo">
+            <option>Masculino</option>
+            <option>Femenino</option> 
+            <option selected value="NA">No deseo responder</option>
+        </select></label>
+        <label>Almacenamiento de datos:
+        <select name="datos almacenados">
+            <option value="TOTAL">Acepta el almacenamiento de mis datos y el envío a terceros</option>
+            <option value="PARCIAL">Acepta el almacenamiento de mis datos pero no el envío a terceros</option>
+            <option value="NINGUNO">No acepta el almacenamiento ni el envío de datos a terceros</option>
+        </select>
+        </label>
+
+        <p>Idioma para comunicaciones: </p>     <!-- en el caso de que no se marque ninguno no se enviara nada -->
+        <label><input type="radio" name="idioma" value="Español" checked>Español</label>
+        <label><input type="radio" name="idioma" value="Inglés">Inglés</label>
+        <label><input type="radio" name="idioma" value="Francés">Francéss</label>
+
+        <p>Aficiones: </p>
+        <label><input type="checkbox" name="aficiones[]" value="música" >La música</label>
+        <label><input type="checkbox" name="aficiones[]" value="leer" >Leer libros</label>
+        <label><input type="checkbox" name="aficiones[]" value="cine" >El cine</label>
+        <label><input type="checkbox" name="aficiones[]" value="deporte" >El deporte</label>
+        <!-- si utilizamos el nismo name para todos sin agregar [] se manda solo el último que se seleccionó -->
+        <!-- si utilizamos un name diferente para cada uno se mandarán todos los q se han seleccionado pero en distintas lineas -->
+        <!-- si utilizamos [] se mandará toda la información como un array, es decir, se guardarán todos los datos juntos-->
+    
+        <label>Fecha de nacimiento: 
+            <input type="date" name="fecha_nacimiento" required>
+        </label>
+        <label>Semana Santa:
+            <input type="week" name="Semana Santa">
+        </label>
+        
+        <input type="hidden" name="version" value="1.0">
+
+        <input type="submit" value="Enviar datos" name="envio">
+    </form>
+</body>
+</html>
